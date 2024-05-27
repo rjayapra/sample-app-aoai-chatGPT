@@ -53,6 +53,7 @@ Please see the [section below](#add-an-identity-provider) for important informat
 2. To connect to your data, you need to specify an Azure Cognitive Search index to use. You can [create this index yourself](https://learn.microsoft.com/en-us/azure/search/search-get-started-portal) or use the [Azure AI Studio](https://oai.azure.com/portal/chat) to create the index for you.
 
     These variables are required when adding your data with Azure AI Search:
+    - `DATASOURCE_TYPE` (should be set to `AzureCognitiveSearch`)
     - `AZURE_SEARCH_SERVICE`
     - `AZURE_SEARCH_INDEX`
     - `AZURE_SEARCH_KEY`
@@ -72,8 +73,8 @@ Please see the [section below](#add-an-identity-provider) for important informat
     - `AZURE_SEARCH_STRICTNESS`
     - `AZURE_OPENAI_EMBEDDING_NAME`
 
-3. Start the app with `start.cmd`. This will build the frontend, install backend dependencies, and then start the app. Or, just run the backend in debug mode using the VSCode debug configuration in `.vscode/launch.json`.
-4. You can see the local running app at http://127.0.0.1:50505.
+4. Start the app with `start.cmd`. This will build the frontend, install backend dependencies, and then start the app. Or, just run the backend in debug mode using the VSCode debug configuration in `.vscode/launch.json`.
+5. You can see the local running app at http://127.0.0.1:50505.
 
 #### Local Setup: Enable Chat History
 To enable chat history, you will need to set up CosmosDB resources. The ARM template in the `infrastructure` folder can be used to deploy an app service and a CosmosDB with the database and container configured. Then specify these additional environment variables: 
