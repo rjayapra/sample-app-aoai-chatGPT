@@ -669,6 +669,9 @@ const Chat = () => {
   const onShowCitation = (citation: Citation) => {
     setActiveCitation(citation)
     setIsCitationPanelOpen(true)
+    if (citation.url && !citation.url.includes('blob.core')) {
+      window.open(citation.url, '_blank')
+    }
   }
 
   const onViewSource = (citation: Citation) => {

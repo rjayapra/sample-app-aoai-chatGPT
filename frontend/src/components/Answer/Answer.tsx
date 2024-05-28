@@ -16,7 +16,7 @@ import { AppStateContext } from '../../state/AppProvider'
 import { parseAnswer } from './AnswerParser'
 
 import styles from './Answer.module.css'
-
+import config from '../../../citation_config.json';
 interface Props {
   answer: AskResponse
   onCitationClicked: (citedDocument: Citation) => void
@@ -73,16 +73,36 @@ export const Answer = ({ answer, onCitationClicked }: Props) => {
       const part_i = citation.part_index ?? (citation.chunk_id ? parseInt(citation.chunk_id) + 1 : '')
       if (truncate && citation.filepath.length > filePathTruncationLimit) {
         const citationLength = citation.filepath.length
-        citationFilename = `${citation.filepath.substring(0, 20)}...${citation.filepath.substring(citationLength - 20)} - Part ${part_i}`
+        citationFilename = checkConfig(citation); 
+        //citationFilename = `${citation.filepath.substring(0, 20)}...${citation.filepath.substring(citationLength - 20)} - Part ${part_i}`
       } else {
-        citationFilename = `${citation.filepath} - Part ${part_i}`
+        citationFilename = checkConfig(citation); 
+        //citationFilename = `${citation.filepath} - Part ${part_i}`
       }
     } else if (citation.filepath && citation.reindex_id) {
-      citationFilename = `${citation.filepath} - Part ${citation.reindex_id}`
+      citationFilename = checkConfig(citation); 
+      //citationFilename = `${citation.filepath} - Part ${citation.reindex_id}`
     } else {
       citationFilename = `Citation ${index}`
     }
+    citation.url = citationFilename;
     return citationFilename
+  }
+
+  const checkConfig = (citation: Citation) => {
+    let filepath = "";
+    console.log(JSON.stringify(config));
+    config.forEach(obj => {
+        Object.entries(obj).forEach(([key, value]) => {
+            console.log(`${key} - ${value}`);
+            if(citation.filepath != null && citation.filepath.includes(obj.filename)){
+                console.log(obj.sharepointUrl);
+                filepath = obj.sharepointUrl;                                        
+            }                                
+        });            
+    });
+    //citation.url = filepath;
+    return filepath;        
   }
 
   const onLikeResponseClicked = async () => {

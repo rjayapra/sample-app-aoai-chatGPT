@@ -99,13 +99,13 @@ def init_openai_client():
     azure_openai_client = None
     try:
         # API version check
-        if (
-            app_settings.azure_openai.preview_api_version
-            < MINIMUM_SUPPORTED_AZURE_OPENAI_PREVIEW_API_VERSION
-        ):
-            raise ValueError(
-                f"The minimum supported Azure OpenAI preview API version is '{MINIMUM_SUPPORTED_AZURE_OPENAI_PREVIEW_API_VERSION}'"
-            )
+       # if (
+       #     app_settings.azure_openai.preview_api_version
+        #    < MINIMUM_SUPPORTED_AZURE_OPENAI_PREVIEW_API_VERSION
+        #):
+         #   raise ValueError(
+         #       f"The minimum supported Azure OpenAI preview API version is '{MINIMUM_SUPPORTED_AZURE_OPENAI_PREVIEW_API_VERSION}'"
+          #  )
 
         # Endpoint
         if (
