@@ -73,15 +73,17 @@ export const Answer = ({ answer, onCitationClicked }: Props) => {
       const part_i = citation.part_index ?? (citation.chunk_id ? parseInt(citation.chunk_id) + 1 : '')
       if (truncate && citation.filepath.length > filePathTruncationLimit) {
         const citationLength = citation.filepath.length
-        citationFilename = checkConfig(citation); 
-        //citationFilename = `${citation.filepath.substring(0, 20)}...${citation.filepath.substring(citationLength - 20)} - Part ${part_i}`
+        citationFilename = `${citation.filepath.substring(0, 20)}...${citation.filepath.substring(citationLength - 20)} - Part ${part_i}`
+        citationFilename = checkConfig(citation, citationFilename);         
       } else {
-        citationFilename = checkConfig(citation); 
-        //citationFilename = `${citation.filepath} - Part ${part_i}`
+        citationFilename = `${citation.filepath} - Part ${part_i}`
+        citationFilename = checkConfig(citation, citationFilename); 
+        
       }
     } else if (citation.filepath && citation.reindex_id) {
-      citationFilename = checkConfig(citation); 
-      //citationFilename = `${citation.filepath} - Part ${citation.reindex_id}`
+      citationFilename = `${citation.filepath} - Part ${citation.reindex_id}`
+      citationFilename = checkConfig(citation, citationFilename); 
+      
     } else {
       citationFilename = `Citation ${index}`
     }
@@ -89,7 +91,7 @@ export const Answer = ({ answer, onCitationClicked }: Props) => {
     return citationFilename
   }
 
-  const checkConfig = (citation: Citation) => {
+  const checkConfig = (citation: Citation, citationFilename: string) => {
     let filepath = "";
     console.log(JSON.stringify(config));
     config.forEach(obj => {
@@ -101,7 +103,8 @@ export const Answer = ({ answer, onCitationClicked }: Props) => {
             }                                
         });            
     });
-    //citation.url = filepath;
+    if (filepath == "") 
+      filepath = citationFilename;
     return filepath;        
   }
 
