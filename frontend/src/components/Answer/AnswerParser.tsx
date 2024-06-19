@@ -26,7 +26,7 @@ export function parseAnswer(answer: AskResponse): ParsedAnswer {
   if (typeof answer.answer !== "string") return null
   let answerText = answer.answer
   const citationLinks = answerText.match(/\[(doc\d\d?\d?)]/g)
-
+  console.log(citationLinks?.[0].link);  
   const lengthDocN = '[doc'.length
 
   let filteredCitations = [] as Citation[]

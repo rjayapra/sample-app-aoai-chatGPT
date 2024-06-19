@@ -36,14 +36,7 @@
             "metadata": {
                 "description": "Name of Web App"
             }
-        },
-        "ApplicationInsightsName": {
-            "type": "string",
-            "defaultValue": "[guid(resourceGroup().id)]",
-            "metadata": {
-                "description": "Name of Application Insights"
-            }
-        },
+        },        
         "AzureSearchService": {
             "type": "string",
             "defaultValue": "",
@@ -351,7 +344,7 @@
         }
     },
     "variables": {
-        "WebAppImageName": "DOCKER|sampleappaoaichatgpt.azurecr.io/sample-app-aoai-chatgpt:latest",
+        "WebAppImageName": "DOCKER|mlwkspregistry.azurecr.io/sample-app-aoai-chatgpt:latest",
         "cosmosdb_account_name": "[format('db-{0}', parameters('WebsiteName'))]",
         "cosmosdb_database_name": "db_conversation_history",
         "cosmosdb_container_name": "conversations",
@@ -387,11 +380,7 @@
             "properties": {
                 "serverFarmId": "[parameters('HostingPlanName')]",
                 "siteConfig": {
-                    "appSettings": [
-                        {
-                            "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
-                            "value": "[reference(resourceId('Microsoft.Insights/components', parameters('ApplicationInsightsName')), '2015-05-01').InstrumentationKey]"
-                        },
+                    "appSettings": [                       
                         {
                             "name": "AZURE_SEARCH_SERVICE",
                             "value": "[parameters('AzureSearchService')]"
@@ -580,19 +569,6 @@
                     "linuxFxVersion": "[variables('WebAppImageName')]"
                 }
             }
-        },
-        {
-            "type": "Microsoft.Insights/components",
-            "apiVersion": "2020-02-02",
-            "name": "[parameters('ApplicationInsightsName')]",
-            "location": "[resourceGroup().location]",
-            "tags": {
-                "[concat('hidden-link:', resourceId('Microsoft.Web/sites', parameters('ApplicationInsightsName')))]": "Resource"
-            },
-            "properties": {
-                "Application_Type": "web"
-            },
-            "kind": "web"
         },
         {
             "condition": "[parameters('WebAppEnableChatHistory')]",
