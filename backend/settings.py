@@ -230,10 +230,10 @@ class _SearchCommonSettings(BaseSettings):
     allow_partial_result: bool = False
     include_contexts: Optional[List[str]] = ["citations", "intent"]
     vectorization_dimensions: Optional[int] = None
-    #role_information: str = Field(
-    #    default="You are an AI assistant that helps people find information.",
-    #    validation_alias="AZURE_OPENAI_SYSTEM_MESSAGE"
-    #)
+    role_information: str = Field(
+        default="You are an AI assistant that helps people find information.",
+        validation_alias="AZURE_OPENAI_SYSTEM_MESSAGE"
+    )
 
     @field_validator('include_contexts', mode='before')
     @classmethod
