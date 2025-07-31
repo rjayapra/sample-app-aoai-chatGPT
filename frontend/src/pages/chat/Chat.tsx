@@ -13,6 +13,7 @@ import { nord } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 import styles from './Chat.module.css'
 import Contoso from '../../assets/Contoso.svg'
+import Oscar from '../../assets/OSCAR_Logo.svg'
 import { XSSAllowTags } from '../../constants/sanatizeAllowables'
 
 import {
@@ -47,7 +48,7 @@ const enum messageStatus {
 
 const Chat = () => {
   const appStateContext = useContext(AppStateContext)
-  const ui = appStateContext?.state.frontendSettings?.ui
+  const ui = appStateContext?.state.language === 'en' ? appStateContext?.state.frontendSettings?.ui_en : appStateContext?.state.frontendSettings?.ui_fr
   const AUTH_ENABLED = appStateContext?.state.frontendSettings?.auth_enabled
   const chatMessageStreamEnd = useRef<HTMLDivElement | null>(null)
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -108,7 +109,7 @@ const Chat = () => {
 
   useEffect(() => {
     if (!appStateContext?.state.isLoading) {
-      setLogo(ui?.chat_logo || ui?.logo || Contoso)
+      setLogo(ui?.chat_logo || ui?.logo || Oscar)
     }
   }, [appStateContext?.state.isLoading])
 
@@ -122,7 +123,7 @@ const Chat = () => {
       return
     }
     const userInfoList = await getUserInfo()
-    if (userInfoList.length === 0 && window.location.hostname !== '127.0.0.1') {
+    if (userInfoList.length === 0 && (window.location.hostname !== '127.0.0.1' )){
       setShowAuthMessage(true)
     } else {
       setShowAuthMessage(false)
@@ -192,7 +193,7 @@ const Chat = () => {
       id: uuid(),
       role: 'user',
       content: questionContent as string,
-      date: new Date().toISOString()
+      date: new Date().toISOString()      
     }
 
     let conversation: Conversation | null | undefined
@@ -201,6 +202,7 @@ const Chat = () => {
         id: conversationId ?? uuid(),
         title: question as string,
         messages: [userMessage],
+        language: appStateContext?.state.language,
         date: new Date().toISOString()
       }
     } else {
@@ -213,6 +215,7 @@ const Chat = () => {
         return
       } else {
         conversation.messages.push(userMessage)
+        conversation.language = appStateContext?.state.language
       }
     }
 
@@ -220,7 +223,8 @@ const Chat = () => {
     setMessages(conversation.messages)
 
     const request: ConversationRequest = {
-      messages: [...conversation.messages.filter(answer => answer.role !== ERROR)]
+      messages: [...conversation.messages.filter(answer => answer.role !== ERROR)],
+      language: appStateContext?.state.language
     }
 
     let result = {} as ChatResponse
@@ -579,13 +583,23 @@ const Chat = () => {
 
         // Returning the prettified error message
         if (reason !== '') {
-          return (
-            'The prompt was filtered due to triggering Azure OpenAI’s content filtering system.\n' +
-            'Reason: This prompt contains content flagged as ' +
-            reason +
-            '\n\n' +
+          if (appStateContext?.state.language === 'en') {
+            return (
+              'The prompt was filtered due to triggering Azure OpenAI’s content filtering system.\n' +
+              'Reason: This prompt contains content flagged as ' +
+              reason +
+              '\n\n' +
             'Please modify your prompt and retry. Learn more: https://go.microsoft.com/fwlink/?linkid=2198766'
           )
+          } else {
+            return (
+              "L'invite a été filtrée car elle a déclenché le système de filtrage de contenu d'Azure OpenAI.\n" +
+              "Raison : Cette invite contient un contenu signalé comme " +
+              reason +
+              "\n\n" +
+              "Veuillez modifier votre invite et réessayer. En savoir plus : https://go.microsoft.com/fwlink/?linkid=2198766"
+            )
+          }
         }
       }
     } catch (e) {
@@ -836,7 +850,7 @@ const Chat = () => {
                     <div className={styles.chatMessageGpt}>
                       <Answer
                         answer={{
-                          answer: "Generating answer...",
+                          answer:  appStateContext?.state.language === 'en' ? "Generating answer..." : "Génération de la réponse...",
                           citations: [],
                           generated_chart: null
                         }}
@@ -856,7 +870,7 @@ const Chat = () => {
                   horizontal
                   className={styles.stopGeneratingContainer}
                   role="button"
-                  aria-label="Stop generating"
+                  aria-label={appStateContext?.state.language === 'en' ? "Stop generating" : "Arrêter la génération"}
                   tabIndex={0}
                   onClick={stopGenerating}
                   onKeyDown={e => (e.key === 'Enter' || e.key === ' ' ? stopGenerating() : null)}>
@@ -890,7 +904,7 @@ const Chat = () => {
                     iconProps={{ iconName: 'Add' }}
                     onClick={newChat}
                     disabled={disabledButton()}
-                    aria-label="start a new chat button"
+                    aria-label={appStateContext?.state.language === 'en' ? "start a new chat button" : "démarrer un nouveau chat"}
                   />
                 )}
                 <CommandBarButton
@@ -923,7 +937,7 @@ const Chat = () => {
                       : newChat
                   }
                   disabled={disabledButton()}
-                  aria-label="clear chat button"
+                  aria-label={appStateContext?.state.language === 'en' ? "clear chat button" : "effacer le chat"}
                 />
                 <Dialog
                   hidden={hideErrorDialog}
@@ -933,7 +947,7 @@ const Chat = () => {
               </Stack>
               <QuestionInput
                 clearOnSend
-                placeholder="Type a new question..."
+                placeholder= {appStateContext?.state.language === 'en' ? "Type a new question..." : "Tapez une nouvelle question..."}
                 disabled={isLoading}
                 onSend={(question, id) => {
                   appStateContext?.state.isCosmosDBAvailable?.cosmosDB

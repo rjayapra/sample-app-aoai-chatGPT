@@ -50,7 +50,23 @@ class _UiSettings(BaseSettings):
     show_share_button: bool = True
     show_chat_history_button: bool = True
 
+class _UiSettingsFr(_UiSettings):
+    model_config = SettingsConfigDict(
+        env_prefix="UI_FR_",
+        env_file=DOTENV_PATH,
+        extra="ignore",
+        env_ignore_empty=True
+    )
 
+    title: str = "Contoso"
+    chat_title: str = "Commencez à discuter"
+    chat_description: str = "Ce chatbot est configuré pour répondre à vos questions"
+    logo: Optional[str] = None
+    chat_logo: Optional[str] = None
+    favicon: str = "/favicon.ico"
+    show_share_button: bool = True
+    show_chat_history_button: bool = True
+    
 class _ChatHistorySettings(BaseSettings):
     model_config = SettingsConfigDict(
         env_prefix="AZURE_COSMOSDB_",
@@ -119,6 +135,7 @@ class _AzureOpenAISettings(BaseSettings):
     presence_penalty: Optional[confloat(ge=-2.0, le=2.0)] = 0.0
     frequency_penalty: Optional[confloat(ge=-2.0, le=2.0)] = 0.0
     system_message: str = "You are an AI assistant that helps people find information."
+    system_message_fr: str = "Vous êtes un assistant IA qui aide les gens à trouver des informations"
     preview_api_version: str = MINIMUM_SUPPORTED_AZURE_OPENAI_PREVIEW_API_VERSION
     embedding_endpoint: Optional[str] = None
     embedding_key: Optional[str] = None
@@ -213,10 +230,10 @@ class _SearchCommonSettings(BaseSettings):
     allow_partial_result: bool = False
     include_contexts: Optional[List[str]] = ["citations", "intent"]
     vectorization_dimensions: Optional[int] = None
-    role_information: str = Field(
-        default="You are an AI assistant that helps people find information.",
-        validation_alias="AZURE_OPENAI_SYSTEM_MESSAGE"
-    )
+    #role_information: str = Field(
+    #    default="You are an AI assistant that helps people find information.",
+    #    validation_alias="AZURE_OPENAI_SYSTEM_MESSAGE"
+    #)
 
     @field_validator('include_contexts', mode='before')
     @classmethod
@@ -257,6 +274,7 @@ class _AzureSearchSettings(BaseSettings, DatasourcePayloadConstructor):
     service: str = Field(exclude=True)
     endpoint_suffix: str = Field(default="search.windows.net", exclude=True)
     index: str = Field(serialization_alias="index_name")
+    index_fr: str = Field(serialization_alias="index_name")
     key: Optional[str] = Field(default=None, exclude=True)
     use_semantic_search: bool = Field(default=False, exclude=True)
     semantic_search_config: str = Field(default="", serialization_alias="semantic_configuration")
@@ -341,6 +359,7 @@ class _AzureSearchSettings(BaseSettings, DatasourcePayloadConstructor):
         **kwargs
     ):
         request = kwargs.pop('request', None)
+        language = kwargs.pop('language', 'en')
         if request and self.permitted_groups_column:
             self.filter = self._set_filter_string(request)
             
@@ -348,7 +367,11 @@ class _AzureSearchSettings(BaseSettings, DatasourcePayloadConstructor):
             self._settings.azure_openai.extract_embedding_dependency()
         parameters = self.model_dump(exclude_none=True, by_alias=True)
         parameters.update(self._settings.search.model_dump(exclude_none=True, by_alias=True))
-        
+        if language == 'fr':
+            parameters['index_name'] = self.index_fr
+        else:
+            parameters['index_name'] = self.index
+        logging.debug(f"Parameters for Azure Search: {parameters}")
         return {
             "type": self._type,
             "parameters": parameters
@@ -768,6 +791,7 @@ class _AppSettings(BaseModel):
     azure_openai: _AzureOpenAISettings = _AzureOpenAISettings()
     search: _SearchCommonSettings = _SearchCommonSettings()
     ui: Optional[_UiSettings] = _UiSettings()
+    ui_fr: Optional[_UiSettingsFr] = _UiSettingsFr()
     
     # Constructed properties
     chat_history: Optional[_ChatHistorySettings] = None

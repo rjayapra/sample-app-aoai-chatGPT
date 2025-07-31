@@ -45,4 +45,12 @@
     width: auto;
     padding: 0 8px;
   }
-}
+
+  .languageToggleButton{
+    width: 50px;
+    height: 20px;
+    border-radius: 4px;
+    padding: 5px 12px;  
+  }
+  
+ }

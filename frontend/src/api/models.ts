@@ -45,6 +45,7 @@ export type ChatMessage = {
   date: string
   feedback?: Feedback
   context?: string
+  language?: string
 }
 
 export type ExecResults = {
@@ -59,6 +60,7 @@ export type Conversation = {
   title: string
   messages: ChatMessage[]
   date: string
+  language?: string
 }
 
 export enum ChatCompletionType {
@@ -86,6 +88,7 @@ export type ChatResponse = {
 
 export type ConversationRequest = {
   messages: ChatMessage[]
+  language?: string
 }
 
 export type UserInfo = {
@@ -123,7 +126,17 @@ export type ErrorMessage = {
   subtitle: string
 }
 
-export type UI = {
+export type UI_en = {
+  title: string
+  chat_title: string
+  chat_description: string
+  logo?: string
+  chat_logo?: string
+  show_share_button?: boolean
+  show_chat_history_button?: boolean
+}
+
+export type UI_fr = {
   title: string
   chat_title: string
   chat_description: string
@@ -136,7 +149,8 @@ export type UI = {
 export type FrontendSettings = {
   auth_enabled?: string | null
   feedback_enabled?: string | null
-  ui?: UI
+  ui_en?: UI_en
+  ui_fr?: UI_fr
   sanitize_answer?: boolean
   oyd_enabled?: boolean
 }

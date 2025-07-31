@@ -5,7 +5,8 @@ import { CopyRegular } from '@fluentui/react-icons'
 
 import { CosmosDBStatus } from '../../api'
 import Contoso from '../../assets/Contoso.svg'
-import { HistoryButton, ShareButton } from '../../components/common/Button'
+import Oscar from '../../assets/OSCAR_Logo.svg'
+import { ToggleButton, HistoryButton, ShareButton } from '../../components/common/Button'
 import { AppStateContext } from '../../state/AppProvider'
 
 import styles from './Layout.module.css'
@@ -18,13 +19,13 @@ const Layout = () => {
   const [hideHistoryLabel, setHideHistoryLabel] = useState<string>('Hide chat history')
   const [showHistoryLabel, setShowHistoryLabel] = useState<string>('Show chat history')
   const [logo, setLogo] = useState('')
+  
   const appStateContext = useContext(AppStateContext)
-  const ui = appStateContext?.state.frontendSettings?.ui
-
+  
   const handleShareClick = () => {
     setIsSharePanelOpen(true)
   }
-
+  
   const handleSharePanelDismiss = () => {
     setIsSharePanelOpen(false)
     setCopyClicked(false)
@@ -42,7 +43,7 @@ const Layout = () => {
 
   useEffect(() => {
     if (!appStateContext?.state.isLoading) {
-      setLogo(ui?.logo || Contoso)
+      setLogo(ui?.logo || Oscar)
     }
   }, [appStateContext?.state.isLoading])
 
@@ -53,6 +54,21 @@ const Layout = () => {
   }, [copyClicked])
 
   useEffect(() => { }, [appStateContext?.state.isCosmosDBAvailable.status])
+
+  useEffect(() => {
+    if (!appStateContext) return
+    const hostname = window.location.hostname
+    let language = 'en'
+    // Example: Use .fr domain or fr subdomain for French
+    if (hostname.includes('-fr-') ) {
+      language = 'fr'
+    }
+    if (appStateContext.state.language !== language) {
+      appStateContext.dispatch({ type: 'SET_LANGUAGE', payload: language })
+    }
+  }, [appStateContext])
+
+  const ui = appStateContext?.state.language === 'en' ? appStateContext?.state.frontendSettings?.ui_en : appStateContext?.state.frontendSettings?.ui_fr
 
   useEffect(() => {
     const handleResize = () => {
@@ -90,6 +106,23 @@ const Layout = () => {
                 text={appStateContext?.state?.isChatHistoryOpen ? hideHistoryLabel : showHistoryLabel}
               />
             )}
+            
+            {/* 
+            <ToggleButton
+              className={styles.languageToggleButton}
+              onChange={() => {
+              const newLang = appStateContext?.state.language === 'en' ? 'fr' : 'en'
+              appStateContext?.dispatch({ type: 'SET_LANGUAGE', payload: newLang })               
+              }}
+              aria-label="Toggle language"
+              label="Language"
+              onText="English "
+              offText="French "
+              defaultChecked={appStateContext?.state.language === 'en'}
+              checked={appStateContext?.state.language === 'en'}
+            />
+            <span style={{ marginRight: 10 }} />
+            */}
             {ui?.show_share_button && <ShareButton onClick={handleShareClick} text={shareLabel} />}
           </Stack>
         </Stack>

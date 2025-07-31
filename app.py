@@ -93,7 +93,7 @@ frontend_settings = {
         app_settings.chat_history and
         app_settings.chat_history.enable_feedback
     ),
-    "ui": {
+    "ui_en": {
         "title": app_settings.ui.title,
         "logo": app_settings.ui.logo,
         "chat_logo": app_settings.ui.chat_logo or app_settings.ui.logo,
@@ -101,6 +101,15 @@ frontend_settings = {
         "chat_description": app_settings.ui.chat_description,
         "show_share_button": app_settings.ui.show_share_button,
         "show_chat_history_button": app_settings.ui.show_chat_history_button,
+    },
+    "ui_fr": {
+        "title": app_settings.ui_fr.title,
+        "logo": app_settings.ui_fr.logo,
+        "chat_logo": app_settings.ui_fr.chat_logo or app_settings.ui_fr.logo,
+        "chat_title": app_settings.ui_fr.chat_title,
+        "chat_description": app_settings.ui_fr.chat_description,
+        "show_share_button": app_settings.ui_fr.show_share_button,
+        "show_chat_history_button": app_settings.ui_fr.show_chat_history_button,
     },
     "sanitize_answer": app_settings.base_settings.sanitize_answer,
     "oyd_enabled": app_settings.base_settings.datasource_type,
@@ -240,14 +249,20 @@ async def init_cosmosdb_client():
 
 def prepare_model_args(request_body, request_headers):
     request_messages = request_body.get("messages", [])
+    language = request_body.get("language", "en")
+    if language == "fr":
+        system_msg = app_settings.azure_openai.system_message_fr
+    else:
+        system_msg = app_settings.azure_openai.system_message
+   
     messages = []
-    if not app_settings.datasource:
-        messages = [
-            {
-                "role": "system",
-                "content": app_settings.azure_openai.system_message
-            }
-        ]
+    #if not app_settings.datasource:
+    messages = [
+        {
+            "role": "system",
+            "content": system_msg
+        }
+    ]
 
     for message in request_messages:
         if message:
@@ -301,7 +316,8 @@ def prepare_model_args(request_body, request_headers):
                 model_args["extra_body"] = {
                     "data_sources": [
                         app_settings.datasource.construct_payload_configuration(
-                            request=request
+                            request=request,
+                            language=language,
                         )
                     ]
                 }
@@ -422,8 +438,9 @@ async def send_chat_request(request_body, request_headers):
         if message.get("role") != 'tool':
             filtered_messages.append(message)
             
-    request_body['messages'] = filtered_messages
+    request_body['messages'] = filtered_messages    
     model_args = prepare_model_args(request_body, request_headers)
+    print(f"Model args: {model_args}")
 
     try:
         azure_openai_client = await init_openai_client()

@@ -82,6 +82,8 @@ export const appStateReducer = (state: AppState, action: Action): AppState => {
           [action.payload.answerId]: action.payload.exec_result
         }
       }
+    case 'SET_LANGUAGE':
+      return { ...state, language: action.payload }
     default:
       return state
   }

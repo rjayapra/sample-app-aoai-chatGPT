@@ -226,6 +226,43 @@ export const Answer = ({ answer, onCitationClicked, onExectResultClicked }: Prop
     )
   }
 
+  const ReportInappropriateFeedbackContentFr = () => {
+    return (
+      <>
+        <div>
+          Le contenu est <span style={{ color: 'red' }}>*</span>
+        </div>
+        <Stack tokens={{ childrenGap: 4 }}>
+          <Checkbox
+            label="Discours haineux, stéréotypes, dénigrant"
+            id={Feedback.HateSpeech}
+            defaultChecked={negativeFeedbackList.includes(Feedback.HateSpeech)}
+            onChange={updateFeedbackList}></Checkbox>
+          <Checkbox
+            label="Violent : glorification de la violence, automutilation"
+            id={Feedback.Violent}
+            defaultChecked={negativeFeedbackList.includes(Feedback.Violent)}
+            onChange={updateFeedbackList}></Checkbox>
+          <Checkbox
+            label="Sexuel : contenu explicite, manipulation"
+            id={Feedback.Sexual}
+            defaultChecked={negativeFeedbackList.includes(Feedback.Sexual)}
+            onChange={updateFeedbackList}></Checkbox>
+          <Checkbox
+            label="Manipulatif : sournois, émotionnel, insistant, harcèlement"
+            defaultChecked={negativeFeedbackList.includes(Feedback.Manipulative)}
+            id={Feedback.Manipulative}
+            onChange={updateFeedbackList}></Checkbox>
+          <Checkbox
+            label="Autre"
+            id={Feedback.OtherHarmful}
+            defaultChecked={negativeFeedbackList.includes(Feedback.OtherHarmful)}
+            onChange={updateFeedbackList}></Checkbox>
+        </Stack>
+      </>
+    )
+  }
+
   const components = {
     code({ node, ...props }: { node: any;[key: string]: any }) {
       let language
@@ -324,7 +361,11 @@ export const Answer = ({ answer, onCitationClicked, onExectResultClicked }: Prop
             </Stack.Item>
           )}
           <Stack.Item className={styles.answerDisclaimerContainer}>
-            <span className={styles.answerDisclaimer}>AI-generated content may be incorrect</span>
+            appStateContext?.state.language === 'en' ? (
+              <span className={styles.answerDisclaimer}>AI-generated content may be incorrect</span>
+            ) : (
+              <span className={styles.answerDisclaimer}>Le contenu généré par l'IA peut être incorrect</span>
+            )}
           </Stack.Item>
           {!!answer.exec_results?.length && (
             <Stack.Item onKeyDown={e => (e.key === 'Enter' || e.key === ' ' ? toggleIsRefAccordionOpen() : null)}>
@@ -394,16 +435,21 @@ export const Answer = ({ answer, onCitationClicked, onExectResultClicked }: Prop
           ]
         }}
         dialogContentProps={{
-          title: 'Submit Feedback',
+          title: appStateContext?.state.language === 'en' ? 'Submit Feedback' : 'Soumettre des commentaires',
           showCloseButton: true
         }}>
         <Stack tokens={{ childrenGap: 4 }}>
-          <div>Your feedback will improve this experience.</div>
+          appContext?.state.language === 'en' ? (
+            <div>Your feedback will improve this experience.</div>
+            {!showReportInappropriateFeedback ? <UnhelpfulFeedbackContent /> : <ReportInappropriateFeedbackContent />}
+            <div>By pressing submit, your feedback will be visible to the application owner.</div>
+          ) : (
+            <div>Vos commentaires amélioreront cette expérience.</div>
+            {!showReportInappropriateFeedback ? <UnhelpfulFeedbackContent /> : <ReportInappropriateFeedbackContentFr />}
+            <div>En appuyant sur soumettre, vos commentaires seront visibles par le propriétaire de l'application.</div>
+          )
 
-          {!showReportInappropriateFeedback ? <UnhelpfulFeedbackContent /> : <ReportInappropriateFeedbackContent />}
-
-          <div>By pressing submit, your feedback will be visible to the application owner.</div>
-
+          
           <DefaultButton disabled={negativeFeedbackList.length < 1} onClick={onSubmitNegativeFeedback}>
             Submit
           </DefaultButton>

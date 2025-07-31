@@ -29,7 +29,8 @@ export interface AppState {
   frontendSettings: FrontendSettings | null
   feedbackState: { [answerId: string]: Feedback.Neutral | Feedback.Positive | Feedback.Negative }
   isLoading: boolean;
-  answerExecResult: { [answerId: string]: [] }
+  language: string
+  answerExecResult: { [answerId: string]: [] }  
 }
 
 export type Action =
@@ -51,6 +52,7 @@ export type Action =
   }
   | { type: 'GET_FEEDBACK_STATE'; payload: string }
   | { type: 'SET_ANSWER_EXEC_RESULT'; payload: { answerId: string, exec_result: [] } }
+  | { type: 'SET_LANGUAGE'; payload: string }
 
 const initialState: AppState = {
   isChatHistoryOpen: false,
@@ -66,6 +68,7 @@ const initialState: AppState = {
   feedbackState: {},
   isLoading: true,
   answerExecResult: {},
+  language: 'en'
 }
 
 export const AppStateContext = createContext<
@@ -144,6 +147,7 @@ export const AppStateProvider: React.FC<AppStateProviderProps> = ({ children }) 
 
   useEffect(() => {
     const getFrontendSettings = async () => {
+      
       frontendSettings()
         .then(response => {
           dispatch({ type: 'FETCH_FRONTEND_SETTINGS', payload: response as FrontendSettings })
