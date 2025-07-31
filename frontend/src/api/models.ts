@@ -55,6 +55,12 @@ export type ExecResults = {
   code_generated: string | null
 }
 
+export type ExecResults = {
+  intent: string
+  search_query: string | null
+  search_result: string | null
+}
+
 export type Conversation = {
   id: string
   title: string
