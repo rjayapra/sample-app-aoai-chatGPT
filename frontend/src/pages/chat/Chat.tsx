@@ -56,6 +56,9 @@ const Chat = () => {
   const [activeCitation, setActiveCitation] = useState<Citation>()
   const [isCitationPanelOpen, setIsCitationPanelOpen] = useState<boolean>(false)
   const [isIntentsPanelOpen, setIsIntentsPanelOpen] = useState<boolean>(false)
+  const [citationContent, setCitationContent] = useState<string>('')
+  const [citationContentType, setCitationContentType] = useState<string>('')
+  const [citationLoading, setCitationLoading] = useState<boolean>(false)
   const abortFuncs = useRef([] as AbortController[])
   const [showAuthMessage, setShowAuthMessage] = useState<boolean | undefined>()
   const [messages, setMessages] = useState<ChatMessage[]>([])
@@ -123,7 +126,7 @@ const Chat = () => {
       return
     }
     const userInfoList = await getUserInfo()
-    if (userInfoList.length === 0 && (window.location.hostname !== '127.0.0.1' )){
+    if (userInfoList.length === 0 && (window.location.hostname !== '127.0.0.1')) {
       setShowAuthMessage(true)
     } else {
       setShowAuthMessage(false)
@@ -193,7 +196,7 @@ const Chat = () => {
       id: uuid(),
       role: 'user',
       content: questionContent as string,
-      date: new Date().toISOString()      
+      date: new Date().toISOString()
     }
 
     let conversation: Conversation | null | undefined
@@ -589,8 +592,8 @@ const Chat = () => {
               'Reason: This prompt contains content flagged as ' +
               reason +
               '\n\n' +
-            'Please modify your prompt and retry. Learn more: https://go.microsoft.com/fwlink/?linkid=2198766'
-          )
+              'Please modify your prompt and retry. Learn more: https://go.microsoft.com/fwlink/?linkid=2198766'
+            )
           } else {
             return (
               "L'invite a été filtrée car elle a déclenché le système de filtrage de contenu d'Azure OpenAI.\n" +
@@ -715,11 +718,71 @@ const Chat = () => {
     chatMessageStreamEnd.current?.scrollIntoView({ behavior: 'smooth' })
   }, [showLoadingMessage, processMessages])
 
+  const fetchCitationContent = async (citation: Citation) => {
+    if (citation.url && citation.url.includes('blob.core')) {
+      setCitationLoading(true)
+      try {
+        const response = await fetch(citation.url)
+        const contentType = response.headers.get('content-type') || ''
+        let content = await response.text()
+
+        // Format HTML content
+        if (contentType.includes('text/html') || citation.url.toLowerCase().endsWith('.html')) {
+          // Extract body content and clean it up
+          const parser = new DOMParser()
+          const doc = parser.parseFromString(content, 'text/html')
+
+          // Remove script tags and style tags for security
+          doc.querySelectorAll('script, style').forEach(el => el.remove())
+
+          // Get just the body content or main content
+          const bodyContent = doc.body?.innerHTML || content
+          setCitationContent(bodyContent)
+          setCitationContentType('html')
+        } else if (contentType.includes('text/plain') || citation.url.toLowerCase().endsWith('.txt')) {
+          setCitationContent(content)
+          setCitationContentType('text')
+        } else if (citation.url.toLowerCase().endsWith('.pdf')) {
+          setCitationContent('')
+          setCitationContentType('pdf')
+        } else if (citation.url.toLowerCase().match(/\.(doc|docx|xls|xlsx|ppt|pptx)$/)) {
+          setCitationContent('')
+          setCitationContentType('office')
+        } else if (citation.url.toLowerCase().match(/\.(jpg|jpeg|png|gif|bmp|svg)$/)) {
+          setCitationContent('')
+          setCitationContentType('image')
+        } else {
+          setCitationContent('Preview not available for this file type.')
+          setCitationContentType('text')
+        }
+      } catch (error) {
+        console.error('Error fetching citation content:', error)
+        setCitationContent('Error loading content. Please try again.')
+        setCitationContentType('text')
+      } finally {
+        setCitationLoading(false)
+      }
+    } else {
+      setCitationContent('')
+      setCitationContentType('')
+    }
+  }
+
   const onShowCitation = (citation: Citation) => {
     setActiveCitation(citation)
     setIsCitationPanelOpen(true)
-    if (citation.url && !citation.url.includes('blob.core')) {
+
+    if (citation.url && citation.url.includes('blob.core')) {
+      // For blob storage files, fetch and display content in panel
+      fetchCitationContent(citation)
+    } else if (citation.url && !citation.url.includes('blob.core')) {
+      // For external URLs, open directly in new tab
       window.open(citation.url, '_blank')
+      setCitationContent('')
+      setCitationContentType('')
+    } else {
+      setCitationContent('')
+      setCitationContentType('')
     }
   }
 
@@ -853,7 +916,7 @@ const Chat = () => {
                     <div className={styles.chatMessageGpt}>
                       <Answer
                         answer={{
-                          answer:  appStateContext?.state.language === 'en' ? "Generating answer..." : "Génération de la réponse...",
+                          answer: appStateContext?.state.language === 'en' ? "Generating answer..." : "Génération de la réponse...",
                           citations: [],
                           generated_chart: null
                         }}
@@ -950,7 +1013,7 @@ const Chat = () => {
               </Stack>
               <QuestionInput
                 clearOnSend
-                placeholder= {appStateContext?.state.language === 'en' ? "Type a new question..." : "Tapez une nouvelle question..."}
+                placeholder={appStateContext?.state.language === 'en' ? "Type a new question..." : "Tapez une nouvelle question..."}
                 disabled={isLoading}
                 onSend={(question, id) => {
                   appStateContext?.state.isCosmosDBAvailable?.cosmosDB
@@ -992,6 +1055,8 @@ const Chat = () => {
                 onClick={() => onViewSource(activeCitation)}>
                 {activeCitation.title}
               </h5>
+
+              {/* Original citation content */}
               <div tabIndex={0}>
                 <ReactMarkdown
                   linkTarget="_blank"
@@ -1001,6 +1066,89 @@ const Chat = () => {
                   rehypePlugins={[rehypeRaw]}
                 />
               </div>
+
+              {/* Enhanced content display for blob storage files */}
+              {activeCitation.url && activeCitation.url.includes('blob.core') && (
+                <div className={styles.citationContentContainer}>
+                  <div className={styles.citationContentHeader}>
+                    <strong>Document Preview</strong>
+                  </div>
+                  {citationLoading ? (
+                    <div className={styles.citationLoading}>
+                      <span>Loading document content...</span>
+                    </div>
+                  ) : citationContent ? (
+                    <div className={styles.citationContentDisplay}>
+                      {citationContentType === 'html' ? (
+                        <div
+                          className={styles.citationHtmlContent}
+                          dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(citationContent, { ALLOWED_TAGS: ['p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ul', 'ol', 'li', 'strong', 'em', 'br', 'div', 'span', 'table', 'tr', 'td', 'th', 'thead', 'tbody'] }) }}
+                        />
+                      ) : citationContentType === 'pdf' ? (
+                        <div className={styles.citationPdfViewer}>
+                          <iframe
+                            src={`${activeCitation.url}#toolbar=1&navpanes=0&scrollbar=1&view=FitH`}
+                            className={styles.citationPdfFrame}
+                            title="PDF Document"
+                          />
+                          <div className={styles.citationViewerNote}>
+                            💡 If the PDF doesn't load, click "Open Original" below
+                          </div>
+                        </div>
+                      ) : citationContentType === 'office' ? (
+                        <div className={styles.citationOfficeViewer}>
+                          <iframe
+                            src={`https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(activeCitation.url || '')}`}
+                            className={styles.citationOfficeFrame}
+                            title="Office Document"
+                            onError={() => {
+                              // Fallback to Google Docs Viewer if Office Online fails
+                              const iframe = document.querySelector('.citationOfficeFrame') as HTMLIFrameElement;
+                              if (iframe) {
+                                iframe.src = `https://docs.google.com/gview?url=${encodeURIComponent(activeCitation.url || '')}&embedded=true`;
+                              }
+                            }}
+                          />
+                          <div className={styles.citationViewerNote}>
+                            💡 If the document doesn't load, click "Open Original" below
+                          </div>
+                        </div>
+                      ) : citationContentType === 'image' ? (
+                        <div className={styles.citationImageViewer}>
+                          <img
+                            src={activeCitation.url || ''}
+                            alt="Citation Image"
+                            className={styles.citationImage}
+                            onError={(e) => {
+                              (e.target as HTMLImageElement).style.display = 'none';
+                              const container = (e.target as HTMLImageElement).parentElement;
+                              if (container) {
+                                container.innerHTML = '<div class="' + styles.citationErrorMessage + '">Unable to load image. Click "Open Original" to view.</div>';
+                              }
+                            }}
+                          />
+                        </div>
+                      ) : (
+                        <pre className={styles.citationTextContent}>
+                          {citationContent}
+                        </pre>
+                      )}
+                    </div>
+                  ) : null}
+
+                  {/* Action buttons */}
+                  <div className={styles.citationActions}>
+                    {activeCitation.url && (
+                      <button
+                        className={styles.citationActionButton}
+                        onClick={() => activeCitation.url && window.open(activeCitation.url, '_blank')}
+                        aria-label="Open original document">
+                        <span>📄 Open Original</span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
             </Stack.Item>
           )}
           {messages && messages.length > 0 && isIntentsPanelOpen && (

@@ -325,7 +325,7 @@
   border-bottom: none;
 }
 
-.exectResultList > p {
+.exectResultList>p {
   display: flex;
   flex-direction: row;
   gap: 4px;
@@ -333,7 +333,7 @@
   margin-bottom: 16px;
 }
 
-.exectResultList > span {
+.exectResultList>span {
   font-weight: 600;
 }
 
@@ -394,5 +394,238 @@ a {
 
   .citationPanel {
     max-width: 100%;
+  }
+}
+
+/* Enhanced citation content styles */
+.citationContentContainer {
+  margin-top: 16px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  background-color: #fafafa;
+  overflow: hidden;
+}
+
+.citationContentHeader {
+  padding: 12px 16px;
+  background-color: #f3f2f1;
+  border-bottom: 1px solid #e1e1e1;
+  font-weight: 600;
+  font-size: 14px;
+  color: #323130;
+}
+
+.citationLoading {
+  padding: 24px 16px;
+  text-align: center;
+  color: #605e5c;
+  font-style: italic;
+}
+
+.citationContentDisplay {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+.citationHtmlContent {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  line-height: 1.6;
+  color: #323130;
+}
+
+.citationHtmlContent h1,
+.citationHtmlContent h2,
+.citationHtmlContent h3,
+.citationHtmlContent h4,
+.citationHtmlContent h5,
+.citationHtmlContent h6 {
+  color: #323130;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.citationHtmlContent h1 {
+  font-size: 24px;
+}
+
+.citationHtmlContent h2 {
+  font-size: 20px;
+}
+
+.citationHtmlContent h3 {
+  font-size: 18px;
+}
+
+.citationHtmlContent h4,
+.citationHtmlContent h5,
+.citationHtmlContent h6 {
+  font-size: 16px;
+}
+
+.citationHtmlContent p {
+  margin-bottom: 12px;
+}
+
+.citationHtmlContent ul,
+.citationHtmlContent ol {
+  margin-left: 20px;
+  margin-bottom: 12px;
+  padding-left: 8px;
+}
+
+.citationHtmlContent li {
+  margin-bottom: 4px;
+}
+
+.citationHtmlContent table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.citationHtmlContent th,
+.citationHtmlContent td {
+  border: 1px solid #e1e1e1;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.citationHtmlContent th {
+  background-color: #f3f2f1;
+  font-weight: 600;
+}
+
+.citationHtmlContent strong {
+  font-weight: 600;
+}
+
+.citationHtmlContent em {
+  font-style: italic;
+}
+
+.citationTextContent {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  color: #323130;
+  background-color: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.citationActions {
+  padding: 12px 16px;
+  border-top: 1px solid #e1e1e1;
+  background-color: #f9f9f9;
+}
+
+.citationActionButton {
+  background: linear-gradient(135deg, #0078d4 0%, #106ebe 100%);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.citationActionButton:hover {
+  background: linear-gradient(135deg, #106ebe 0%, #005a9e 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 120, 212, 0.3);
+}
+
+.citationActionButton:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 120, 212, 0.3);
+}
+
+/* PDF Viewer Styles */
+.citationPdfViewer {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.citationPdfFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Office Document Viewer Styles */
+.citationOfficeViewer {
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.citationOfficeFrame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 4px;
+}
+
+/* Image Viewer Styles */
+.citationImageViewer {
+  width: 100%;
+  text-align: center;
+  padding: 16px;
+}
+
+.citationImage {
+  max-width: 100%;
+  max-height: 400px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Viewer Notes and Error Messages */
+.citationViewerNote {
+  padding: 8px 12px;
+  margin-top: 8px;
+  background-color: #fff4e6;
+  border: 1px solid #ffd700;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #8a6d3b;
+  text-align: center;
+}
+
+.citationErrorMessage {
+  padding: 16px;
+  background-color: #fff5f5;
+  border: 1px solid #fed7d7;
+  border-radius: 4px;
+  color: #c53030;
+  text-align: center;
+  font-style: italic;
+}
+
+/* Responsive Design for Document Viewers */
+@media (max-width: 768px) {
+
+  .citationPdfViewer,
+  .citationOfficeViewer {
+    height: 300px;
+  }
+
+  .citationPdfFrame,
+  .citationOfficeFrame {
+    height: 100%;
   }
 }

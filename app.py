@@ -129,13 +129,13 @@ async def init_openai_client():
     
     try:
         # API version check
-       # if (
-       #     app_settings.azure_openai.preview_api_version
-        #    < MINIMUM_SUPPORTED_AZURE_OPENAI_PREVIEW_API_VERSION
-        #):
-         #   raise ValueError(
-         #       f"The minimum supported Azure OpenAI preview API version is '{MINIMUM_SUPPORTED_AZURE_OPENAI_PREVIEW_API_VERSION}'"
-          #  )
+        if (
+            app_settings.azure_openai.preview_api_version
+            < MINIMUM_SUPPORTED_AZURE_OPENAI_PREVIEW_API_VERSION
+        ):
+            raise ValueError(
+                f"The minimum supported Azure OpenAI preview API version is '{MINIMUM_SUPPORTED_AZURE_OPENAI_PREVIEW_API_VERSION}'"
+            )
 
         # Endpoint
         if (
@@ -1062,7 +1062,7 @@ async def generate_title(conversation_messages) -> str:
     messages.append({"role": "user", "content": title_prompt})
 
     try:
-        azure_openai_client = init_openai_client()
+        azure_openai_client = await init_openai_client()
         response = await azure_openai_client.chat.completions.create(
             model=app_settings.azure_openai.model, messages=messages, temperature=1, max_tokens=64
         )

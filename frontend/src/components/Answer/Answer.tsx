@@ -360,7 +360,7 @@ export const Answer = ({ answer, onCitationClicked, onExectResultClicked }: Prop
             </Stack.Item>
           )}
           <Stack.Item className={styles.answerDisclaimerContainer}>
-            appStateContext?.state.language === 'en' ? (
+            {appStateContext?.state.language === 'en' ? (
               <span className={styles.answerDisclaimer}>AI-generated content may be incorrect</span>
             ) : (
               <span className={styles.answerDisclaimer}>Le contenu généré par l'IA peut être incorrect</span>

@@ -28,7 +28,17 @@ from data_utils import chunk_directory
 
 def create_search_index(index_name, index_client):
     print(f"Ensuring search index {index_name} exists")
-    if index_name not in index_client.list_index_names():
+    
+    try:
+        existing_indexes = list(index_client.list_index_names())
+        print("Existing indexes:", existing_indexes)
+    except Exception as e:
+        print(f"Error connecting to Azure Search service: {e}")
+        print("Please check your AZURE_SEARCH_SERVICE name in the .env file")
+        print("Make sure the service exists and the name is correct")
+        raise
+
+    if index_name not in existing_indexes:
         index = SearchIndex(
             name=index_name,
             fields=[
