@@ -1,0 +1,559 @@
+[
+    {
+        "location": "canadacentral",
+        "subscription_id": "5563494c-0695-4f2d-ac17-aed83985b5c9",
+        "resource_group": "NDDNOscar2CcDevServices",
+        "search_service_name": "nd-dn-oscar2-dev-ais",
+        "index_name": "fr_index",
+        "chunk_size": 1024,
+        "token_overlap": 128,
+        "semantic_config_name": "default",
+        "language": "fr",
+        "data_paths": [
+            {
+                "path": "data/html/1000",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+            },
+            {
+                "path": "data/html/1001",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1001/"
+            },
+            {
+                "path": "data/html/1002",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1002/"
+            },
+            {
+                "path": "data/html/1003",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1003/"
+            },
+            {
+                "path": "data/html/1004",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1004/"
+            },
+            {
+                "path": "data/html/1005",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1005/"
+            },
+            {
+                "path": "data/html/1006",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1006/"
+            },
+            {
+                "path": "data/html/1016",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1016/"
+            },
+            {
+                "path": "data/html/1017",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1017/"
+            },
+            {
+                "path": "data/html/1018",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1018/"
+            },
+            {
+                "path": "data/html/2001",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2001/"
+            },
+            {
+                "path": "data/html/2005",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2005/"
+            },
+            {
+                "path": "data/html/2006",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2006/"
+            },
+            {
+                "path": "data/html/2007",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2007/"
+            },
+            {
+                "path": "data/html/2008",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2008/"
+            },
+            {
+                "path": "data/html/2009",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2009/"
+            },
+            {
+                "path": "data/html/2010",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2010/"
+            },
+            {
+                "path": "data/html/2011",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2011/"
+            },
+            {
+                "path": "data/html/2015",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2015/"
+            },
+            {
+                "path": "data/html/2017",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2017/"
+            },
+            {
+                "path": "data/html/2020",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2020/"
+            },
+            {
+                "path": "data/html/2050",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2050/"
+            },
+            {
+                "path": "data/html/2051",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2051/"
+            },
+            {
+                "path": "data/html/2052",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2052/"
+            },
+            {
+                "path": "data/html/3000",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3000/"
+            },
+            {
+                "path": "data/html/3001",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3001/"
+            },
+            {
+                "path": "data/html/3002",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3002/"
+            },
+            {
+                "path": "data/html/3003",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3003/"
+            },
+            {
+                "path": "data/html/3004",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3004/"
+            },
+            {
+                "path": "data/html/3005",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3005/"
+            },
+            {
+                "path": "data/html/3007",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3007/"
+            },
+            {
+                "path": "data/html/3008",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3008/"
+            },
+            {
+                "path": "data/html/3009",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3009/"
+            },
+            {
+                "path": "data/html/3012",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3012/"
+            },
+            {
+                "path": "data/html/3013",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3013/"
+            },
+            {
+                "path": "data/html/3014",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3014/"
+            },
+            {
+                "path": "data/html/3015",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3015/"
+            },
+            {
+                "path": "data/html/3016",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3016/"
+            },
+            {
+                "path": "data/html/3017",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3017/"
+            },
+            {
+                "path": "data/html/3020",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3020/"
+            },
+            {
+                "path": "data/html/3022",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3022/"
+            },
+            {
+                "path": "data/html/3026",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3026/"
+            },
+            {
+                "path": "data/html/3029",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3029/"
+            },
+            {
+                "path": "data/html/3033",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3033/"
+            },
+            {
+                "path": "data/html/3034",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3034/"
+            },
+            {
+                "path": "data/html/3035",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3035/"
+            },
+            {
+                "path": "data/html/3036",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3036/"
+            },
+            {
+                "path": "data/html/3038",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3038/"
+            },
+            {
+                "path": "data/html/4001",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4001/"
+            },
+            {
+                "path": "data/html/4002",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4002/"
+            },
+            {
+                "path": "data/html/4003",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4003/"
+            },
+            {
+                "path": "data/html/4007",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4007/"
+            },
+            {
+                "path": "data/html/5001",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5001/"
+            },
+            {
+                "path": "data/html/5002",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5002/"
+            },
+            {
+                "path": "data/html/5003",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5003/"
+            },
+            {
+                "path": "data/html/5005",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5005/"
+            },
+            {
+                "path": "data/html/5006",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5006/"
+            },
+            {
+                "path": "data/html/5008",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5008/"
+            },
+            {
+                "path": "data/html/5009",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5009/"
+            },
+            {
+                "path": "data/html/5012",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5012/"
+            },
+            {
+                "path": "data/html/5015",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5015/"
+            },
+            {
+                "path": "data/html/5016",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5016/"
+            },
+            {
+                "path": "data/html/5017",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5017/"
+            },
+            {
+                "path": "data/html/5018",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5018/"
+            },
+            {
+                "path": "data/html/5019",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5019/"
+            },
+            {
+                "path": "data/html/5020",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5020/"
+            },
+            {
+                "path": "data/html/5021",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5021/"
+            },
+            {
+                "path": "data/html/5023",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5023/"
+            },
+            {
+                "path": "data/html/5024",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5024/"
+            },
+            {
+                "path": "data/html/5025",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5025/"
+            },
+            {
+                "path": "data/html/5026",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5026/"
+            },
+            {
+                "path": "data/html/5027",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5027/"
+            },
+            {
+                "path": "data/html/5029",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5029/"
+            },
+            {
+                "path": "data/html/5031",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5037",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5037/"
+            },
+            {
+                "path": "data/html/5039",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5039/"
+            },
+            {
+                "path": "data/html/5040",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5040/"
+            },
+            {
+                "path": "data/html/5041",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5041/"
+            },
+            {
+                "path": "data/html/5044",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5044/"
+            },
+            {
+                "path": "data/html/5045",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5045/"
+            },
+            {
+                "path": "data/html/5046",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5046/"
+            },
+            {
+                "path": "data/html/5047",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5047/"
+            },
+            {
+                "path": "data/html/5049",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5049/"
+            },
+            {
+                "path": "data/html/5050",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5050/"
+            },
+            {
+                "path": "data/html/5059",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5059/"
+            },
+            {
+                "path": "data/html/5060",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5060/"
+            },
+            {
+                "path": "data/html/5061",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5061/"
+            },
+            {
+                "path": "data/html/5062",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5062/"
+            },
+            {
+                "path": "data/html/5070",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5070/"
+            },
+            {
+                "path": "data/html/5516",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5516/"
+            },
+            {
+                "path": "data/html/6000",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6000/"
+            },
+            {
+                "path": "data/html/6001",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6001/"
+            },
+            {
+                "path": "data/html/6002",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6002/"
+            },
+            {
+                "path": "data/html/6003",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6003/"
+            },
+            {
+                "path": "data/html/6004",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6004/"
+            },
+            {
+                "path": "data/html/6010",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6010/"
+            },
+            {
+                "path": "data/html/serie-6000",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/"
+            },
+            {
+                "path": "data/html/6423",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6423/"
+            },
+            {
+                "path": "data/html/6500",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6500/"
+            },
+            {
+                "path": "data/html/directives-ordonnances-administratives-defense",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/"
+            },
+            {
+                "path": "data/html/7000",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7000/"
+            },
+            {
+                "path": "data/html/7001",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7001/"
+            },
+            {
+                "path": "data/html/7002",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7002/"
+            },
+            {
+                "path": "data/html/7004",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7004/"
+            },
+            {
+                "path": "data/html/7006",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7006/"
+            },
+            {
+                "path": "data/html/7011",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7011/"
+            },
+            {
+                "path": "data/html/7012",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7012/"
+            },
+            {
+                "path": "data/html/7014",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7014/"
+            },
+            {
+                "path": "data/html/7016",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7016/"
+            },
+            {
+                "path": "data/html/7021",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7021/"
+            },
+            {
+                "path": "data/html/7023",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7023/"
+            },
+            {
+                "path": "data/html/7024",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7024/"
+            },
+            {
+                "path": "data/html/7025",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7025/"
+            },
+            {
+                "path": "data/html/7026",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7026/"
+            },
+            {
+                "path": "data/html/8000",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8000/"
+            },
+            {
+                "path": "data/html/8001",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8001/"
+            },
+            {
+                "path": "data/html/8002",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8002/"
+            },
+            {
+                "path": "data/html/8006",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8006/"
+            },
+            {
+                "path": "data/html/8007",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8007/"
+            },
+            {
+                "path": "data/html/8008",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8008/"
+            },
+            {
+                "path": "data/html/8009",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8009/"
+            },
+            {
+                "path": "data/html/8010",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8010/"
+            },
+            {
+                "path": "data/html/8012",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8012/"
+            },
+            {
+                "path": "data/html/8014",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8014/"
+            },
+            {
+                "path": "data/html/9000",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-9000/9000/"
+            },
+            {
+                "path": "data/html/9001",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-9000/9001/"
+            },
+            {
+                "path": "data/html/9003",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-9000/9003/"
+            },
+            {
+                "path": "data/html/9004",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-9000/9004/"
+            },
+            {
+                "path": "data/html/9005",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-9000/9005/"
+            },
+            {
+                "path": "data/html/vol-1-administration",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-1-administration/"
+            },
+            {
+                "path": "data/html/vol-2-discipline",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-2-discipline/"
+            },
+            {
+                "path": "data/html/vol-3-finances",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-3-finances/"
+            },
+            {
+                "path": "data/html/chapitre-210-prestations-subventions-diverses",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-3-finances/chapitre-210-prestations-subventions-diverses/"
+            },
+            {
+                "path": "data/html/remunerations-avantages-sociaux",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/remunerations-avantages-sociaux/"
+            },
+            {
+                "path": "data/html/avantages-militaires",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/services/avantages-militaires/"
+            },
+            {
+                "path": "data/html/prestations",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/services/avantages-militaires/solde-pension-indemnites/prestations/"
+            }
+        ]
+    }
+]

@@ -28,7 +28,7 @@ from azure.identity import DefaultAzureCredential
 from azure.storage.blob import ContainerClient
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
-from langchain.text_splitter import TextSplitter, MarkdownTextSplitter, RecursiveCharacterTextSplitter, PythonCodeTextSplitter
+from langchain_text_splitters import MarkdownTextSplitter, PythonCodeTextSplitter, TextSplitter,  RecursiveCharacterTextSplitter
 from openai import AzureOpenAI
 from tqdm import tqdm
 
@@ -539,7 +539,14 @@ def get_files_recursively(directory_path: str) -> List[str]:
     Returns:
         List[str]: List of file paths.
     """
+
     file_paths = []
+
+    if os.path.isfile(directory_path):
+        print("Processing file - " + directory_path)
+        file_paths.append(directory_path)
+        return file_paths
+
     for dirpath, _, files in os.walk(directory_path):
         for file_name in files:
             file_path = os.path.join(dirpath, file_name)

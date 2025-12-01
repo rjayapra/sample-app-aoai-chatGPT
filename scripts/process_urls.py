@@ -30,13 +30,15 @@ def get_common_prefix_and_paths():
     # Get the common prefix
     common_prefix = '/'.join(common_prefix_parts) + '/'
     
-    # Get the URLs and filenames
+    # Get the URLs, folder names, and filenames
     url_file_pairs = []
     for url in urls:
-        filename = url.split('/')[-1]  # Get the last part of the URL (the filename)
+        parts = url.split('/')
+        filename = parts[-1]  # Get the last part of the URL (the filename)
+        foldername = parts[-2] if len(parts) >= 2 else ''  # Get the second-to-last part (folder name)
         url_prefix = url[:-len(filename)]  # Get everything except the filename
         if filename:
-            url_file_pairs.append((url_prefix, filename))
+            url_file_pairs.append((url_prefix, foldername, filename))
     
     return url_file_pairs
 
@@ -52,15 +54,20 @@ def update_config():
     with open('config_oscar.json', 'r', encoding='utf-8') as f:
         config = json.load(f)
     
-    # Create individual entries for each file
-    data_paths = []
-    for url_prefix, filename in url_file_pairs:
-        data_paths.append({
-            "path": f"data/html/{filename}",
-            "url_prefix": url_prefix
-        })
+    # Create unique entries for each folder/url_prefix combination
+    unique_paths = {}
+    for url_prefix, foldername, filename in url_file_pairs:
+        key = (foldername, url_prefix)
+        if key not in unique_paths:
+            unique_paths[key] = {
+                "path": f"data/html/{foldername}",
+                "url_prefix": url_prefix
+            }
     
-    # Update the config with individual file entries
+    # Convert to list
+    data_paths = list(unique_paths.values())
+    
+    # Update the config with unique entries
     config[0]['data_paths'] = data_paths
     
     # Write the updated config
