@@ -117,7 +117,7 @@ class WebPageCrawler:
             content: Content to save
             filename: Name of the file
         """
-        html_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'html', last_path_name)
+        html_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data_en', 'html', last_path_name)
         os.makedirs(html_dir, exist_ok=True)
         file_path = os.path.join(html_dir, filename)
         try:
@@ -160,7 +160,7 @@ class WebPageCrawler:
                
                 
                 # Upload to Azure Storage and save locally
-                #self.upload_to_blob(content, filename)
+                self.upload_to_blob(content, filename)
                 self.save_local(content, last_path_name, filename)
                 success_count += 1
                 
@@ -173,8 +173,8 @@ class WebPageCrawler:
 def main():
     # Configuration - replace with your actual values
     STORAGE_ACCOUNT_NAME = os.getenv('AZURE_STORAGE_ACCOUNT_NAME')
-    CONTAINER_NAME = os.getenv('AZURE_STORAGE_CONTAINER_NAME', 'webpages')
-    CSV_FILE_PATH = 'input.csv'
+    CONTAINER_NAME = os.getenv('AZURE_STORAGE_CONTAINER_NAME', 'webpages-en')
+    CSV_FILE_PATH = 'input_en.csv'
     
     if not STORAGE_ACCOUNT_NAME:
         logger.error("AZURE_STORAGE_ACCOUNT_NAME environment variable not set")

@@ -1,0 +1,1459 @@
+[
+    {
+        "location": "canadacentral",
+        "subscription_id": "5563494c-0695-4f2d-ac17-aed83985b5c9",
+        "resource_group": "NDDNOscar2CcDevServices",
+        "search_service_name": "nd-dn-oscar2-dev-ais",
+        "index_name": "fr_index",
+        "chunk_size": 1024,
+        "token_overlap": 128,
+        "semantic_config_name": "default",
+        "language": "fr",
+        "data_paths": [
+            {
+                "path": "data/html/1000-0-cadre-principal-des-directives-et-ordonnances-administratives-de-la-defense.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+            },
+            {
+                "path": "data/html/1000-10-cadre-strategique-de-la-gestion-des-services-administratifs-du-ministere-de-la-defense-nationale-et-des-forces-armees-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+            },
+            {
+                "path": "data/html/1000-11-cadre-strategique-de-la-gestion-de-linfrastructure-et-de-lenvironnement.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+            },
+            {
+                "path": "data/html/1000-1-directives-et-ordonnances-administratives-de-la-defense.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+            },
+            {
+                "path": "data/html/1000-2-communication-de-politiques-au-sein-du-mdn-et-des-fc.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+            },
+            {
+                "path": "data/html/1000-3-disposition-des-attaches-de-signature-dans-la-correspondance.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+            },
+            {
+                "path": "data/html/1000-4-cadre-strategique-de-la-gestion-du-materiel-et-des-biens.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+            },
+            {
+                "path": "data/html/1000-5-cadre-strategique-de-la-gestion-financiere.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+            },
+            {
+                "path": "data/html/1000-7-cadre-strategique-de-la-gestion-du-personnel-militaire.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+            },
+            {
+                "path": "data/html/1000-8-cadre-strategique-de-la-gestion-de-la-securite-et-de-la-surete.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+            },
+            {
+                "path": "data/html/1000-9-cadre-strategique-de-la-gestion-des-employes-du-ministere-de-la-defense-nationale.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+            },
+            {
+                "path": "data/html/1001-0-acces-a-linformation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1001/"
+            },
+            {
+                "path": "data/html/1002-0-application-de-la-loi-sur-la-protection-des-renseignements-personnels.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1002/"
+            },
+            {
+                "path": "data/html/1002-1-demandes-de-renseignements-personnels-vertu-loi-protection-des-renseignements-personnels.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1002/"
+            },
+            {
+                "path": "data/html/1002-2-demandes-non-officielles-de-renseignements-personnels.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1002/"
+            },
+            {
+                "path": "data/html/1002-3-gestion-des-renseignements-personnels.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1002/"
+            },
+            {
+                "path": "data/html/1002-4-gestion-des-incidents-relatifs-a-la-vie-privee.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1002/"
+            },
+            {
+                "path": "data/html/1002-5-evaluations-des-facteurs-relatifs-a-la-vie-privee.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1002/"
+            },
+            {
+                "path": "data/html/1002-6-divulgation-de-renseignements-personnels.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1002/"
+            },
+            {
+                "path": "data/html/1003-0-planification-de-la-continuite-operationnelle.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1003/"
+            },
+            {
+                "path": "data/html/1003-1-programme-de-planification-de-la-continuite-operationnelle.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1003/"
+            },
+            {
+                "path": "data/html/1004-0-stationnement.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1004/"
+            },
+            {
+                "path": "data/html/1004-1-administration-du-stationnement.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1004/"
+            },
+            {
+                "path": "data/html/1005-1-remise-des-recettes-tirees-de-la-vente-de-biens-excedentaires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1005/"
+            },
+            {
+                "path": "data/html/1006-1-radiation-de-materiel.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1006/"
+            },
+            {
+                "path": "data/html/1016-0-gestion-des-depenses.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1016/"
+            },
+            {
+                "path": "data/html/1016-1-utilisation-des-cartes-dachat.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1016/"
+            },
+            {
+                "path": "data/html/1017-0-activites-daccueil-au-canada.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1017/"
+            },
+            {
+                "path": "data/html/1017-1-modalites-relatives-aux-activites-daccueil-au-canada.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1017/"
+            },
+            {
+                "path": "data/html/1018-0-gestion-des-recettes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1018/"
+            },
+            {
+                "path": "data/html/2001-0-visites-de-ressortissants-etrangers-au-mdn-et-aux-fc.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2001/"
+            },
+            {
+                "path": "data/html/2001-1-procedures-relatives-aux-visites-de-ressortissants-etrangers-au-mdn-et-aux-fc.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2001/"
+            },
+            {
+                "path": "data/html/2005-0-chiens-dassistance.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2005/"
+            },
+            {
+                "path": "data/html/2005-1-acces-des-chiens-dassistance-aux-etablissements-de-defense.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2005/"
+            },
+            {
+                "path": "data/html/2006-0-securite-de-la-defense.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2006/"
+            },
+            {
+                "path": "data/html/2006-1-procedures-protection-divulgation-autorisee-renseignements.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2006/"
+            },
+            {
+                "path": "data/html/2007-0-securite.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2007/"
+            },
+            {
+                "path": "data/html/2007-1-programme-de-securite-generale.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2007/"
+            },
+            {
+                "path": "data/html/2007-2-usage-cannabis-employes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2007/"
+            },
+            {
+                "path": "data/html/2008-0-politique-daffaires-publiques.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2008/"
+            },
+            {
+                "path": "data/html/2008-1-obligations-et-responsabilites-en-matiere-daffaires-publiques.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2008/"
+            },
+            {
+                "path": "data/html/2008-2-relations-avec-les-medias-et-annonces-publiques.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2008/"
+            },
+            {
+                "path": "data/html/2008-3-gestion-des-problemes-et-des-crises.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2008/"
+            },
+            {
+                "path": "data/html/2008-4-affaires-publiques-doctrine-militaire-et-operations-des-forces-armees-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2008/"
+            },
+            {
+                "path": "data/html/2008-5-planification-et-execution-du-programme-daffaires-publiques.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2008/"
+            },
+            {
+                "path": "data/html/2008-6-diffusion-dinformation-sur-internet.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2008/"
+            },
+            {
+                "path": "data/html/2008-7-programme-parlementaire-des-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2008/"
+            },
+            {
+                "path": "data/html/2008-8-utilisation-officielle-medias-sociaux.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2008/"
+            },
+            {
+                "path": "data/html/2008-9-recherche-opinion-publique.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2008/"
+            },
+            {
+                "path": "data/html/2009-0-conferences.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2009/"
+            },
+            {
+                "path": "data/html/2009-1-conferences-parrainage-et-participation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2009/"
+            },
+            {
+                "path": "data/html/2010-0-modelisation-et-simulation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2010/"
+            },
+            {
+                "path": "data/html/2010-1-gestion-de-la-modelisation-et-simulation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2010/"
+            },
+            {
+                "path": "data/html/2011-0-architecture-d-entreprise.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2011/"
+            },
+            {
+                "path": "data/html/2011-1-programme-d-architecture-d-entreprise.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2011/"
+            },
+            {
+                "path": "data/html/2015-0-navigabilite.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2015/"
+            },
+            {
+                "path": "data/html/2015-2-enquetes-sur-la-navigabilite-rapports-et-renseignements-proteges.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2015/"
+            },
+            {
+                "path": "data/html/2017-0-griefs-militaires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2017/"
+            },
+            {
+                "path": "data/html/2017-1-processus-de-grief-militaire.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2017/"
+            },
+            {
+                "path": "data/html/2020-0-force-de-reserve.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2020/"
+            },
+            {
+                "path": "data/html/2020-1-premiere-reserve.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2020/"
+            },
+            {
+                "path": "data/html/2020-2-rangers-canadiens.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2020/"
+            },
+            {
+                "path": "data/html/2020-3-service-dadministration-et-dinstruction-des-organisations-de-cadets.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2020/"
+            },
+            {
+                "path": "data/html/2020-4-reserve-supplementaire.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2020/"
+            },
+            {
+                "path": "data/html/2020-5-ententes-sur-le-service-a-letranger-des-forces-de-reserve.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2020/"
+            },
+            {
+                "path": "data/html/2050-0-securite-laser.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2050/"
+            },
+            {
+                "path": "data/html/2050-1-programme-de-securite-laser.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2050/"
+            },
+            {
+                "path": "data/html/2051-0-securite-dans-le-champ-de-tir.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2051/"
+            },
+            {
+                "path": "data/html/2052-0-securite-en-campagne.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-2000/2052/"
+            },
+            {
+                "path": "data/html/3000-0-acquisition-et-soutien-du-materiel.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3000/"
+            },
+            {
+                "path": "data/html/3001-0-gestion-de-linformation-acquisition-et-soutien-du-materiel.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3001/"
+            },
+            {
+                "path": "data/html/3001-1-instruction-relative-a-la-gestion-de-linformation-acquisition-et-soutien-du-materiel.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3001/"
+            },
+            {
+                "path": "data/html/3002-0-munitions-et-explosifs.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3002/"
+            },
+            {
+                "path": "data/html/3002-1-certification-des-munitions-et-explosifs.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3002/"
+            },
+            {
+                "path": "data/html/3002-2-munitions-a-risques-attenues.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3002/"
+            },
+            {
+                "path": "data/html/3002-3-programme-de-securite-des-munitions-et-des-explosifs.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3002/"
+            },
+            {
+                "path": "data/html/3002-4-rapports-sur-les-accidents-incidents-defectuosites-ou-defaillances-de-munitions-ou-dexplosifs.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3002/"
+            },
+            {
+                "path": "data/html/3002-5-utilisation-darmes-a-feu-de-munitions-et-dexplosifs.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3002/"
+            },
+            {
+                "path": "data/html/3002-6-pieces-pyrotechniques-a-grand-deploiement.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3002/"
+            },
+            {
+                "path": "data/html/3002-7-gestion-des-risques-lies-aux-munitions-et-explosifs.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3002/"
+            },
+            {
+                "path": "data/html/3003-1-exigences-relatives-aux-marchandises-controlees-en-matiere-de-gestion-de-securite-et-dacces.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3003/"
+            },
+            {
+                "path": "data/html/3004-0-passation-de-marches.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3004/"
+            },
+            {
+                "path": "data/html/3004-1-apercu-des-procedures-de-passation-des-marches.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3004/"
+            },
+            {
+                "path": "data/html/3004-2-marches-de-services.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3004/"
+            },
+            {
+                "path": "data/html/3005-0-soutien-du-materiel.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3005/"
+            },
+            {
+                "path": "data/html/3007-0-soutien-logistique-integre.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3007/"
+            },
+            {
+                "path": "data/html/3008-0-propriete-intellectuelle.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3008/"
+            },
+            {
+                "path": "data/html/3009-0-qualite-des-materiels-et-des-services.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3009/"
+            },
+            {
+                "path": "data/html/3009-1-gestion-de-la-qualite.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3009/"
+            },
+            {
+                "path": "data/html/3009-2-assurance-officielle-de-la-qualite-aoq.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3009/"
+            },
+            {
+                "path": "data/html/3012-0-services-dalimentation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3012/"
+            },
+            {
+                "path": "data/html/3012-2-gestion-de-la-securite-alimentaire-et-de-la-defense-alimentaire.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3012/"
+            },
+            {
+                "path": "data/html/3013-0-alienation-de-materiel.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3013/"
+            },
+            {
+                "path": "data/html/3013-1-alienation-du-materiel-excedentaire.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3013/"
+            },
+            {
+                "path": "data/html/3014-0-carburants-et-lubrifiants.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3014/"
+            },
+            {
+                "path": "data/html/3014-1-gestion-des-carburants-et-des-lubrifiants.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3014/"
+            },
+            {
+                "path": "data/html/3015-0-achats-ecologiques.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3015/"
+            },
+            {
+                "path": "data/html/3015-1-gestion-des-achats-ecologiques.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3015/"
+            },
+            {
+                "path": "data/html/3016-0-exception-au-titre-de-la-securite-nationale-dans-les-accords-commerciaux.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3016/"
+            },
+            {
+                "path": "data/html/3016-1-instruction-relative-a-lexception-au-titre-de-la-securite-nationale-dans-les-accords-commerciaux.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3016/"
+            },
+            {
+                "path": "data/html/3017-0-transfert-de-materiel-a-dautres-ministeres.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3017/"
+            },
+            {
+                "path": "data/html/3017-1-gestion-du-transfert-de-materiel-a-dautres-ministeres.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3017/"
+            },
+            {
+                "path": "data/html/3020-0-transport.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3020/"
+            },
+            {
+                "path": "data/html/3020-1-utilisation-des-vehicules-du-mdn-pour-le-transport-terrestre-et-delivrance-des-permis-de-conduire.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3020/"
+            },
+            {
+                "path": "data/html/3020-3-service-postal-des-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3020/"
+            },
+            {
+                "path": "data/html/3022-0-obtention-de-soutien-en-service-pour-les-plates-formes-des-fac.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3022/"
+            },
+            {
+                "path": "data/html/3022-1-gestion-de-lobtention-de-soutien-en-service-pour-les-plates-formes-des-fac.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3022/"
+            },
+            {
+                "path": "data/html/3026-0-securite-des-radiofrequences.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3026/"
+            },
+            {
+                "path": "data/html/3026-1-programme-de-securite-des-radiofrequences.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3026/"
+            },
+            {
+                "path": "data/html/3029-0-mouvement-du-materiel.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3029/"
+            },
+            {
+                "path": "data/html/3033-0-ingenierie-des-systemes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3033/"
+            },
+            {
+                "path": "data/html/3034-0-gestion-de-la-configuration-pour-les-systemes-de-defense.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3034/"
+            },
+            {
+                "path": "data/html/3035-0-assurance-du-materiel.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3035/"
+            },
+            {
+                "path": "data/html/3036-0-etalonnage.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3036/"
+            },
+            {
+                "path": "data/html/3036-1-programme-d-etalonnage.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3036/"
+            },
+            {
+                "path": "data/html/3038.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-3000/3038/"
+            },
+            {
+                "path": "data/html/4001-0-gestion-du-cycle-de-vie-des-biens-immobiliers.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4001/"
+            },
+            {
+                "path": "data/html/4001-1-gestion-du-cycle-de-vie-de-lactif-immobilier.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4001/"
+            },
+            {
+                "path": "data/html/4002-0-gestion-surete-nucleaire-rayonnements-ionisants.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4002/"
+            },
+            {
+                "path": "data/html/4002-1-surete-nucleaire-et-protection-contre-les-rayonnements-ionisants.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4002/"
+            },
+            {
+                "path": "data/html/4003-0-protection-et-gerance-de-lenvironnement.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4003/"
+            },
+            {
+                "path": "data/html/4003-1-gestion-des-matieres-dangereuses.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4003/"
+            },
+            {
+                "path": "data/html/4003-2-evaluation-environnementale.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4003/"
+            },
+            {
+                "path": "data/html/4007-0-services-de-protection-contre-les-incendies.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4007/"
+            },
+            {
+                "path": "data/html/4007-1-rapport-et-enquete-en-cas-dincendie-et-dincident.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4007/"
+            },
+            {
+                "path": "data/html/4007-2-mesures-durgence-de-lutte-contre-les-incendies-pour-les-infrastructures-du-mdn-et-des-fac.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4007/"
+            },
+            {
+                "path": "data/html/4007-3-mesures-durgence-pour-le-sauvetage-et-la-lutte-contre-les-incendies-daeronefs.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4007/"
+            },
+            {
+                "path": "data/html/4007-4-programme-de-maintien-de-la-condition-physique-des-pompiers.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-4000/4007/"
+            },
+            {
+                "path": "data/html/5001-1-allocation-de-retraite-a-lintention-de-la-force-de-reserve.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5001/"
+            },
+            {
+                "path": "data/html/5001-2-indemnite-de-maternite-et-indemnite-parentale.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5001/"
+            },
+            {
+                "path": "data/html/5002-0-besoins-et-production-de-personnel-militaire.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5002/"
+            },
+            {
+                "path": "data/html/5002-10-programme-dintegration-des-officiers-sortis-du-rang.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5002/"
+            },
+            {
+                "path": "data/html/5002-11-programme-special-dattribution-de-commission.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5002/"
+            },
+            {
+                "path": "data/html/5002-1-enrolement.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5002/"
+            },
+            {
+                "path": "data/html/5002-2-programme-denrolement-direct-en-qualite-dofficier-force-reguliere.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5002/"
+            },
+            {
+                "path": "data/html/5002-3-mutation-entre-element-et-sous-element-constitutif.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5002/"
+            },
+            {
+                "path": "data/html/5002-4-reserve-supplementaire.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5002/"
+            },
+            {
+                "path": "data/html/5002-5-selection-du-personnel-des-forces-armees-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5002/"
+            },
+            {
+                "path": "data/html/5002-6-programme-de-formation-des-officiers-education-permanente-force-reguliere.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5002/"
+            },
+            {
+                "path": "data/html/5002-7-programme-dinstruction-detudes-subventionnees-lintention-militaires-du-rang-force-reguliere.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5002/"
+            },
+            {
+                "path": "data/html/5002-8-programme-dintegration-a-la-reserve-officiers.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5002/"
+            },
+            {
+                "path": "data/html/5002-9-programme-de-formation-universitaire-a-lintention-des-militaires-du-rang-force-reguliere.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5002/"
+            },
+            {
+                "path": "data/html/5003-0-restrictions-applicables-au-service-militaire-et-limitations-individuelles.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5003/"
+            },
+            {
+                "path": "data/html/5003-1-restrictions-applicables-au-service.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5003/"
+            },
+            {
+                "path": "data/html/5003-5-mesures-administratives-en-matiere-de-grossesse.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5003/"
+            },
+            {
+                "path": "data/html/5003-6-demenagements-imprevus-statuts-particuliers-et-affectations-pour-motifs-personnels.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5003/"
+            },
+            {
+                "path": "data/html/5003-7-service-a-bord-des-sous-marins.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5003/"
+            },
+            {
+                "path": "data/html/5005-0-gestion-des-ressources-humaines-du-personnel-civil.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5005/"
+            },
+            {
+                "path": "data/html/5005-1-structure-de-lautorite-pour-la-gestion-des-ressources-humaines-du-personnel-civil.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5005/"
+            },
+            {
+                "path": "data/html/5005-2-delegation-de-pouvoirs-pour-la-gestion-des-ressources-humaines-civiles.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5005/"
+            },
+            {
+                "path": "data/html/5005-3-programme-daide-aux-employes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5005/"
+            },
+            {
+                "path": "data/html/5006-0-planification-et-examen-du-rendement-du-personnel-civil.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5006/"
+            },
+            {
+                "path": "data/html/5006-1-programme-de-gestion-du-rendement-pour-les-employes-du-mdn.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5006/"
+            },
+            {
+                "path": "data/html/5008-0-relations-patronales-syndicales-personnel-civil.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5008/"
+            },
+            {
+                "path": "data/html/5008-2-consultations-patronales-syndicales-personnel-civil.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5008/"
+            },
+            {
+                "path": "data/html/5009-0-preparation-du-personnel.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5009/"
+            },
+            {
+                "path": "data/html/5009-1-verification-de-letat-de-preparation-du-personnel-aux-fins-de-selection.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5009/"
+            },
+            {
+                "path": "data/html/5012-0-prevention-et-resolution-du-harcelement.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5012/"
+            },
+            {
+                "path": "data/html/5015-0-mesures-dadaptation-en-milieu-de-travail.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5015/"
+            },
+            {
+                "path": "data/html/5016-0-normes-de-conduite-et-de-discipline-personnel-civil.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5016/"
+            },
+            {
+                "path": "data/html/5017-0-sante-mentale.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5017/"
+            },
+            {
+                "path": "data/html/5018-0-gestion-du-soutien-aux-militaires-blesses-ou-malades-et-aux-pertes-militaires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5018/"
+            },
+            {
+                "path": "data/html/5018-2-rapport-en-cas-de-blessures-ou-de-maladie.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5018/"
+            },
+            {
+                "path": "data/html/5018-3-cimetiere-militaire-national-des-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5018/"
+            },
+            {
+                "path": "data/html/5018-4-fr-programme-de-retour-au-service-pour-les-membres-des-forces-armees-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5018/"
+            },
+            {
+                "path": "data/html/5019-0-manquement-a-la-conduite-et-au-rendement.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5019/"
+            },
+            {
+                "path": "data/html/5019-1-relations-personnelles-et-fraternisation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5019/"
+            },
+            {
+                "path": "data/html/5019-2-examen-administratif.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5019/"
+            },
+            {
+                "path": "data/html/5019-3-programme-des-forces-canadiennes-sur-le-controle-des-drogues.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5019/"
+            },
+            {
+                "path": "data/html/5019-4-mesures-correctives.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5019/"
+            },
+            {
+                "path": "data/html/5019-5-inconduite-sexuelle-et-troubles-sexuels.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5019/"
+            },
+            {
+                "path": "data/html/5019-6-inconduite-en-milieu-detudes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5019/"
+            },
+            {
+                "path": "data/html/5019-7-inconduite-liee-a-lalcool.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5019/"
+            },
+            {
+                "path": "data/html/5019-8-dettes-privees.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5019/"
+            },
+            {
+                "path": "data/html/5020-1-usage-du-tabac-en-milieu-de-travail.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5020/"
+            },
+            {
+                "path": "data/html/5021-1-protection-des-voies-respiratoires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5021/"
+            },
+            {
+                "path": "data/html/5021-2-thermostress.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5021/"
+            },
+            {
+                "path": "data/html/5023-0-universalite-du-service.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5023/"
+            },
+            {
+                "path": "data/html/5023-1-normes-operationnelles-minimales-liees-a-luniversalite-du-service.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5023/"
+            },
+            {
+                "path": "data/html/5024-0-logement-du-mdn.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5024/"
+            },
+            {
+                "path": "data/html/5025-0-classification-des-postes-civils.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5025/"
+            },
+            {
+                "path": "data/html/5026-0-griefs-civils.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5026/"
+            },
+            {
+                "path": "data/html/5027-0-reconnaissance.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5027/"
+            },
+            {
+                "path": "data/html/5027-1-programme-des-prix-et-de-la-reconnaissance.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5027/"
+            },
+            {
+                "path": "data/html/5029-0-dotation-des-postes-civils.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5029/"
+            },
+            {
+                "path": "data/html/5029-1-zone-de-selection.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5029/"
+            },
+            {
+                "path": "data/html/5029-2-mesures-correctives-et-revocations.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5029/"
+            },
+            {
+                "path": "data/html/5029-3-mutations.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5029/"
+            },
+            {
+                "path": "data/html/5031-0-apprentissage-et-perfectionnement-professionnel.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-10-formation-par-laventure.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-11-langues-etrangeres.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-1-programme-dequivalences-militaires-des-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-2-cadre-strategique-du-systeme-dinstruction-individuelle-et-deducation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-3-modalites-de-remboursement-dans-le-cadre-du-programme-denrichissement-personnel-des-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-4-programme-du-service-de-preparation-a-une-seconde-carriere.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-50-apprentissage-et-perfectionnement-professionnel-du-personnel-civil.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-51-programme-ministeriel-de-bourses-detudes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-52-orientation-du-nouveau-personnel-civil.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-53-programme-dappui-a-leducation-du-personnel-civil.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-5-programme-deducation-permanente-des-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-6-programme-daccreditation-de-la-formation-militaire-a-des-fins-civiles.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-7-programme-pour-lobtention-dun-premier-baccalaureat.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-8-perfectionnement-professionnel-au-sein-des-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5031-9-rapports-de-cours-et-certificats.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5031/"
+            },
+            {
+                "path": "data/html/5037-1-engagements-des-musiques-militaires-des-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5037/"
+            },
+            {
+                "path": "data/html/5039-0-langues-officielles.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5039/"
+            },
+            {
+                "path": "data/html/5039-3-promotion-du-francais-et-de-langlais.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5039/"
+            },
+            {
+                "path": "data/html/5039-7-education-et-formation-en-seconde-langue-officielle-pour-les-militaires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5039/"
+            },
+            {
+                "path": "data/html/5039-8-test-de-certification-en-seconde-langue-officielle-au-sein-des-forces-armees-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5039/"
+            },
+            {
+                "path": "data/html/5040-0-histoire-et-patrimoine-militaires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5040/"
+            },
+            {
+                "path": "data/html/5040-1-documents-historiques.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5040/"
+            },
+            {
+                "path": "data/html/5040-2-systeme-didentite-des-forces-armees-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5040/"
+            },
+            {
+                "path": "data/html/5040-3-militaires-decedes-portes-disparus-au-cours-doperations-anterieures.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5040/"
+            },
+            {
+                "path": "data/html/5041-0-musique-des-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5041/"
+            },
+            {
+                "path": "data/html/5041-1-services-de-musique-des-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5041/"
+            },
+            {
+                "path": "data/html/5044-1-les-familles.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5044/"
+            },
+            {
+                "path": "data/html/5044-2-avis-en-cas-de-deces-de-maladie-ou-de-blessure-dans-la-famille.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5044/"
+            },
+            {
+                "path": "data/html/5044-3-groupes-de-soutien-au-deploiement.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5044/"
+            },
+            {
+                "path": "data/html/5044-4-violence-en-milieu-familial.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5044/"
+            },
+            {
+                "path": "data/html/5045-0-programmes-de-soutien-du-personnel-des-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5045/"
+            },
+            {
+                "path": "data/html/5046-0-mode-alternatif-de-resolution-des-conflits.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5046/"
+            },
+            {
+                "path": "data/html/5047-1-bureau-de-lombudsman.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5047/"
+            },
+            {
+                "path": "data/html/5049-1-service-obligatoire.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5049/"
+            },
+            {
+                "path": "data/html/5049-2-objection-de-conscience.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5049/"
+            },
+            {
+                "path": "data/html/5050-1-dossiers-directeur-general-carrieres-militaires-et-directeur-gestion-linformation-ressources-humaines-et-militaires-du-juge-avocat-general.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5050/"
+            },
+            {
+                "path": "data/html/5050-3-dossiers-du-personnel-des-forces-armees-canadiennes-relatifs-a-ladministration-des-pertes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5050/"
+            },
+            {
+                "path": "data/html/5059-0-evaluation-du-rendement-des-militaires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5059/"
+            },
+            {
+                "path": "data/html/5060-0-conges.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5060/"
+            },
+            {
+                "path": "data/html/5061-0-recherche-avec-des-sujets-humains.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5061/"
+            },
+            {
+                "path": "data/html/5061-1-procedure-dapprobation-en-matiere-de-recherche-avec-des-sujets-humains.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5061/"
+            },
+            {
+                "path": "data/html/5062-0-recherche-en-sciences-sociales.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5062/"
+            },
+            {
+                "path": "data/html/5062-1-conduite-de-recherche-en-sciences-sociales.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5062/"
+            },
+            {
+                "path": "data/html/5070-0-structure-des-emplois-militaires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5070/"
+            },
+            {
+                "path": "data/html/5070-1-cadre-de-la-structure-des-emplois-militaires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5070/"
+            },
+            {
+                "path": "data/html/5516-0-droits-de-la-personne.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5516/"
+            },
+            {
+                "path": "data/html/5516-1-plaintes-relatives-aux-droits-de-la-personne.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5516/"
+            },
+            {
+                "path": "data/html/5516-2-objection-de-conscience.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5516/"
+            },
+            {
+                "path": "data/html/5516-3-accommodement-pour-motif-religieux-ou-spirituel.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5516/"
+            },
+            {
+                "path": "data/html/5516-4-restrictions-applicables-au-service.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5516/"
+            },
+            {
+                "path": "data/html/5516-5-mesures-adaptation-pour-trouble-apprentissage-lors-du-recrutement-de-instruction-et-de-education.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-5000/5516/"
+            },
+            {
+                "path": "data/html/6000-0-gestion-de-linformation-et-technologies-de-linformation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6000/"
+            },
+            {
+                "path": "data/html/6001-0-gestion-de-linformation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6001/"
+            },
+            {
+                "path": "data/html/6001-2-gestion-des-formulaires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6001/"
+            },
+            {
+                "path": "data/html/6002-0-technologies-de-linformation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6002/"
+            },
+            {
+                "path": "data/html/6002-10-gestion-des-projets-de-technologie-de-linformation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6002/"
+            },
+            {
+                "path": "data/html/6002-1-gestion-des-technologies-de-linformation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6002/"
+            },
+            {
+                "path": "data/html/6002-2-utilisation-legitime-dinternet-de-lintranet-de-la-defense-dordinateurs-et-dautres-systemes-de-technologie-de-linformation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6002/"
+            },
+            {
+                "path": "data/html/6002-3-gestion-des-dispositifs-mobiles-sans-fil.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6002/"
+            },
+            {
+                "path": "data/html/6002-4-gestion-du-spectre-des-radiofrequences.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6002/"
+            },
+            {
+                "path": "data/html/6002-6-reseautage-sans-fil.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6002/"
+            },
+            {
+                "path": "data/html/6002-7-utilisation-des-technologies-des-medias-sociaux-internes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6002/"
+            },
+            {
+                "path": "data/html/6002-8-authentification-et-autorisation-electroniques.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6002/"
+            },
+            {
+                "path": "data/html/6002-9-gestion-des-biens-lies-aux-technologies-de-linformation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6002/"
+            },
+            {
+                "path": "data/html/6003-0-securite-des-technologies-de-linformation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6003/"
+            },
+            {
+                "path": "data/html/6003-1-programme-de-securite-des-technologies-de-linformation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6003/"
+            },
+            {
+                "path": "data/html/6003-2-gestion-du-risque-lie-a-la-securite-des-technologies-de-linformation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6003/"
+            },
+            {
+                "path": "data/html/6003-3-surveillance-et-verification-de-la-securite-des-technologies-de-linformation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6003/"
+            },
+            {
+                "path": "data/html/6004-0-terminologie-de-la-defense.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6004/"
+            },
+            {
+                "path": "data/html/6004-1-programme-de-terminologie-de-la-defense.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6004/"
+            },
+            {
+                "path": "data/html/6110-0-terminologie-de-la-defense.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6010/"
+            },
+            {
+                "path": "data/html/6110-1-programme-de-terminologie-de-la-defense.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6010/"
+            },
+            {
+                "path": "data/html/6111-0-internet-annulee.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/"
+            },
+            {
+                "path": "data/html/6112-0-gestion-du-spectre-des-radiofrequences-annulee.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/"
+            },
+            {
+                "path": "data/html/6420-0-gestion-de-linformation-consignee-annulee.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/"
+            },
+            {
+                "path": "data/html/6421-0-gestion-des-documents-annulee.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/"
+            },
+            {
+                "path": "data/html/6423-0-gestion-des-publications-annulee.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6423/"
+            },
+            {
+                "path": "data/html/6500-0-gestion-des-donnees-et-analytique.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-6000/6500/"
+            },
+            {
+                "path": "data/html/serie-7000.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/"
+            },
+            {
+                "path": "data/html/7000-0-affidavits-et-declarations-solennelles.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7000/"
+            },
+            {
+                "path": "data/html/7000-1-etablissement-des-affidavits-et-des-declarations-solennelles.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7000/"
+            },
+            {
+                "path": "data/html/7001-0-actions-en-justice-devant-les-tribunaux-civils-et-les-tribunaux-de-juridiction-criminelle.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7001/"
+            },
+            {
+                "path": "data/html/7001-1-comparutions-devant-les-tribunaux-civils-et-les-tribunaux-de-juridiction-criminelle.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7001/"
+            },
+            {
+                "path": "data/html/7001-2-signification-de-documents-juridiques-relatifs-a-des-actions-en-justice-au-civil-et-au-criminel.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7001/"
+            },
+            {
+                "path": "data/html/7002-0-commissions-denquete-et-enquetes-sommaires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7002/"
+            },
+            {
+                "path": "data/html/7002-1-commissions-denquete.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7002/"
+            },
+            {
+                "path": "data/html/7002-2-enquetes-sommaires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7002/"
+            },
+            {
+                "path": "data/html/7002-3-sujets-denquete-et-references.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7002/"
+            },
+            {
+                "path": "data/html/7002-4-interrogatoire-des-temoins.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7002/"
+            },
+            {
+                "path": "data/html/7004-0-reclamations-presentees-par-ou-contre-la-couronne-et-paiements-a-titre-gracieux.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7004/"
+            },
+            {
+                "path": "data/html/7004-1-procedures-relatives-aux-reclamations-et-paiements-a-titre-gracieux.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7004/"
+            },
+            {
+                "path": "data/html/7004-2-dedommagement-pour-perte-ou-dommages-causes-aux-effets-personnels.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7004/"
+            },
+            {
+                "path": "data/html/7006-0-fiches-de-conduite.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7006/"
+            },
+            {
+                "path": "data/html/7006-1-etablissement-et-tenue-des-fiches-de-conduite.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7006/"
+            },
+            {
+                "path": "data/html/7011-0-successions-militaires-et-effets-personnels.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7011/"
+            },
+            {
+                "path": "data/html/7011-1-responsabilites-relatives-aux-successions-militaires-et-effets-personnels.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7011/"
+            },
+            {
+                "path": "data/html/7012-0-testaments.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7012/"
+            },
+            {
+                "path": "data/html/7012-1-preparation-et-administration-des-testaments.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7012/"
+            },
+            {
+                "path": "data/html/7014-0-protocoles-dentente.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7014/"
+            },
+            {
+                "path": "data/html/7014-1-elaboration-des-protocoles-dentente.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7014/"
+            },
+            {
+                "path": "data/html/7016-1-administration-des-forces-canadiennes-concernant-la-rehabilitation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7016/"
+            },
+            {
+                "path": "data/html/7021-0-conflits-dinterets-et-apres-mandat.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7021/"
+            },
+            {
+                "path": "data/html/7021-1-conflits-dinterets.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7021/"
+            },
+            {
+                "path": "data/html/7021-2-apres-mandat.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7021/"
+            },
+            {
+                "path": "data/html/7021-3-conditions-dacceptation-de-cadeaux-de-marques-dhospitalite-et-dautres-avantages.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7021/"
+            },
+            {
+                "path": "data/html/7021-4-sollicitation-parrainage-et-dons.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7021/"
+            },
+            {
+                "path": "data/html/7023-0-ethique-de-la-defense.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7023/"
+            },
+            {
+                "path": "data/html/7023-1-programme-dethique-de-la-defense.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7023/"
+            },
+            {
+                "path": "data/html/7024-0-divulgation-dactes-reprehensibles-en-milieu-de-travail.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7024/"
+            },
+            {
+                "path": "data/html/7024-1-mecanismes-internes-de-divulgation-par-des-employes-du-mdn-dactes-reprehensibles-en-milieu-de-travail.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7024/"
+            },
+            {
+                "path": "data/html/7025-0-prevention-et-gestion-des-risques-de-fraude.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7025/"
+            },
+            {
+                "path": "data/html/7026-0-enquetes-administratives.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7026/"
+            },
+            {
+                "path": "data/html/7026-1-gestion-des-enquetes-administratives.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-7000/7026/"
+            },
+            {
+                "path": "data/html/8000-0-neutralisation-des-explosifs-et-munitions.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8000/"
+            },
+            {
+                "path": "data/html/8000-1-activites-de-neutralisation-des-explosifs-et-munitions.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8000/"
+            },
+            {
+                "path": "data/html/8000-2-rapports-et-enquetes-en-cas-dincident-ou-daccident-lie-a-la-neutralisation-des-explosifs-et-munitions.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8000/"
+            },
+            {
+                "path": "data/html/8000-3-radioprotection-pendant-la-neutralisation-des-explosifs-et-munitions.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8000/"
+            },
+            {
+                "path": "data/html/8001-0-commandement-des-forces-doperations-speciales-du-canada-securite-des-informations-et-des-biens.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8001/"
+            },
+            {
+                "path": "data/html/8001-1-commandement-des-forces-doperations-speciales-du-canada-gestion-de-la-securite-des-informations-et-des-biens.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8001/"
+            },
+            {
+                "path": "data/html/8002-0-contre-ingerence.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8002/"
+            },
+            {
+                "path": "data/html/8002-1-programme-national-de-contre-ingerence.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8002/"
+            },
+            {
+                "path": "data/html/8002-2-unite-nationale-de-contre-ingerence-des-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8002/"
+            },
+            {
+                "path": "data/html/8002-3-programme-de-liaison-du-renseignement-de-securite.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8002/"
+            },
+            {
+                "path": "data/html/8006-0-defense-chimique-biologique-radiologique-et-nucleaire.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8006/"
+            },
+            {
+                "path": "data/html/8006-1-operations-formation-instruction-developpement-maintien-puissance-capacites-defense-chimique-biologique-radiologique-nucleaire.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8006/"
+            },
+            {
+                "path": "data/html/8006-2-formation-en-defense-chimique-biologique-radiologique-et-nucleaire.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8006/"
+            },
+            {
+                "path": "data/html/8006-3-developpement-et-maintien-de-la-capacite-de-defense-chimique-biologique-radiologique-et-nucleaire.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8006/"
+            },
+            {
+                "path": "data/html/8007-0-avis-dactivites-du-mdn-et-des-fc-au-sein-de-la-zone-de-responsabilite-de-la-force-operationnelle-interarmees-nord.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8007/"
+            },
+            {
+                "path": "data/html/8008-0-renseignement-de-defense.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8008/"
+            },
+            {
+                "path": "data/html/8009-0-la-plongee-dans-les-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8009/"
+            },
+            {
+                "path": "data/html/8009-1-la-plongee-dans-les-forces-canadiennes-organisation-et-principes-directeurs.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8009/"
+            },
+            {
+                "path": "data/html/8010-0-lecons-retenues.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8010/"
+            },
+            {
+                "path": "data/html/8010-1-processus-des-lecons-retenues-sur-le-plan-operationnel.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8010/"
+            },
+            {
+                "path": "data/html/8012-0-meteorologie-et-oceanographie.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8012/"
+            },
+            {
+                "path": "data/html/8014-0-utilisation-des-animaux-en-recherche-en-enseignement-et-dans-les-tests.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8014/"
+            },
+            {
+                "path": "data/html/8014-1-gestion-de-lutilisation-des-animaux-en-recherche-en-enseignement-et-dans-les-tests.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-8000/8014/"
+            },
+            {
+                "path": "data/html/9000-0-documents-confidentiels-du-cabinet.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-9000/9000/"
+            },
+            {
+                "path": "data/html/9000-1-identification-et-traitement-des-documents-confidentiels-du-cabinet.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-9000/9000/"
+            },
+            {
+                "path": "data/html/9001-1-absence-ou-empechement-du-chef-detat-major-de-la-defense-et-activation-dun-centre-de-commandement-integre-de-releve-des-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-9000/9001/"
+            },
+            {
+                "path": "data/html/9003-1-biens-non-publics.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-9000/9003/"
+            },
+            {
+                "path": "data/html/9004-1-usage-du-cannabis-par-les-militaires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-9000/9004/"
+            },
+            {
+                "path": "data/html/9005-1-intervention-sur-linconduite-sexuelle.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-9000/9005/"
+            },
+            {
+                "path": "data/html/chapitre-12-promotion-des-officiers.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-1-administration/"
+            },
+            {
+                "path": "data/html/chapitre-16-conge.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-1-administration/"
+            },
+            {
+                "path": "data/html/chapitre-17-tenue.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-1-administration/"
+            },
+            {
+                "path": "data/html/chapitre-19-conduite-discipline.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-1-administration/"
+            },
+            {
+                "path": "data/html/chapitre-1-introduction-definitions.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-1-administration/"
+            },
+            {
+                "path": "data/html/chapitre-20-programme-des-forces-canadiennes-sur-le-controle-des-drogues.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-1-administration/"
+            },
+            {
+                "path": "data/html/chapitre-28-allocation-occupation-des-quartiers.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-1-administration/"
+            },
+            {
+                "path": "data/html/chapitre-32-corps-musique.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-1-administration/"
+            },
+            {
+                "path": "data/html/chapitre-36-materiel-fourniture-services.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-1-administration/"
+            },
+            {
+                "path": "data/html/chapitre-38-responsabilite-a-legard-biens-publics-biens-non-publics.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-1-administration/"
+            },
+            {
+                "path": "data/html/chapitre-3-grade-anciennete-commandement-preseance.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-1-administration/"
+            },
+            {
+                "path": "data/html/chapitre-4-devoirs-responsabilites-des-officiers.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-1-administration/"
+            },
+            {
+                "path": "data/html/chapitre-5-devoirs-responsabilites-des-militaires-du-rang.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-1-administration/"
+            },
+            {
+                "path": "data/html/chapitre-103-infractions-dordre-militaire.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-2-discipline/"
+            },
+            {
+                "path": "data/html/chapitre-201-fonctions-responsabilites-des-officiers-comptables.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-3-finances/"
+            },
+            {
+                "path": "data/html/chapitre-202-comptes-caisse-comptes-banque.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-3-finances/"
+            },
+            {
+                "path": "data/html/chapitre-203-prestations-financieres-dispositions-generales.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-3-finances/"
+            },
+            {
+                "path": "data/html/chapitre-204-solde-a-legard-des-juges-militaires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-3-finances/"
+            },
+            {
+                "path": "data/html/chapitre-207-delegations-solde-paiements-obligatoires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-3-finances/"
+            },
+            {
+                "path": "data/html/chapitre-208-amendes-suppressions-deductions.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-3-finances/"
+            },
+            {
+                "path": "data/html/table-matieres.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/ordonnances-reglements-royaux/vol-3-finances/chapitre-210-prestations-subventions-diverses/"
+            },
+            {
+                "path": "data/html/ch-209-frais-transport.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/remunerations-avantages-sociaux/"
+            },
+            {
+                "path": "data/html/chapitre-10-directive-service-militaire-etranger.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/remunerations-avantages-sociaux/"
+            },
+            {
+                "path": "data/html/chapitre-11-directives-postes-isoles.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/remunerations-avantages-sociaux/"
+            },
+            {
+                "path": "data/html/chapitre-203-prestations-financieres.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/remunerations-avantages-sociaux/"
+            },
+            {
+                "path": "data/html/chapitre-208-prestations-reinstallation.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/remunerations-avantages-sociaux/"
+            },
+            {
+                "path": "data/html/chapitre-210-prestations-subventions-diverses.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/remunerations-avantages-sociaux/"
+            },
+            {
+                "path": "data/html/chapitre-211-prestations-service-militaires-blesses-malades.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/remunerations-avantages-sociaux/"
+            },
+            {
+                "path": "data/html/logements-militaires.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/services/avantages-militaires/"
+            },
+            {
+                "path": "data/html/differentielle-de-logement-des-forces-canadiennes.html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/services/avantages-militaires/solde-pension-indemnites/prestations/"
+            }
+        ]
+    }
+]
