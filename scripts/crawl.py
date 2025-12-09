@@ -109,7 +109,7 @@ class WebPageCrawler:
             logger.error(f"Error uploading {blob_name}: {e}")
             raise
     
-    def save_local(self, content: str, filename: str) -> None:
+    def save_local(self, content: str, last_path_name: str, filename: str) -> None:
         """
         Save content to local HTML file.
         
@@ -117,9 +117,8 @@ class WebPageCrawler:
             content: Content to save
             filename: Name of the file
         """
-        html_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data', 'html')
+        html_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'data_en', 'html', last_path_name)
         os.makedirs(html_dir, exist_ok=True)
-        
         file_path = os.path.join(html_dir, filename)
         try:
             with open(file_path, 'w', encoding='utf-8') as f:
@@ -156,9 +155,13 @@ class WebPageCrawler:
                 if not filename.lower().endswith(('.html', '.htm')):
                     filename += '.html'
                 
+                # extract the last path name before the html file from the url. Create the directory with that name and store the file inside it.
+                last_path_name = url.rstrip('/').split('/')[-2]
+               
+                
                 # Upload to Azure Storage and save locally
                 self.upload_to_blob(content, filename)
-                self.save_local(content, filename)
+                self.save_local(content, last_path_name, filename)
                 success_count += 1
                 
             except Exception as e:
@@ -170,8 +173,8 @@ class WebPageCrawler:
 def main():
     # Configuration - replace with your actual values
     STORAGE_ACCOUNT_NAME = os.getenv('AZURE_STORAGE_ACCOUNT_NAME')
-    CONTAINER_NAME = os.getenv('AZURE_STORAGE_CONTAINER_NAME', 'webpages')
-    CSV_FILE_PATH = 'input.csv'
+    CONTAINER_NAME = os.getenv('AZURE_STORAGE_CONTAINER_NAME', 'webpages-en')
+    CSV_FILE_PATH = 'input_en.csv'
     
     if not STORAGE_ACCOUNT_NAME:
         logger.error("AZURE_STORAGE_ACCOUNT_NAME environment variable not set")
