@@ -270,7 +270,7 @@ class _AzureSearchSettings(BaseSettings, DatasourcePayloadConstructor):
     service: str = Field(exclude=True)
     endpoint_suffix: str = Field(default="search.windows.net", exclude=True)
     index: str = Field(serialization_alias="index_name")
-    index_fr: str = Field(serialization_alias="index_name")
+    index_fr: Optional[str] = Field(default=None, exclude=True)  # Deprecated: Use multilingual index instead
     key: Optional[str] = Field(default=None, exclude=True)
     use_semantic_search: bool = Field(default=False, exclude=True)
     semantic_search_config: str = Field(default="", serialization_alias="semantic_configuration")
@@ -289,6 +289,9 @@ class _AzureSearchSettings(BaseSettings, DatasourcePayloadConstructor):
         'vectorSemanticHybrid'
     ] = "simple"
     permitted_groups_column: Optional[str] = Field(default=None, exclude=True)
+    
+    # Multilingual index configuration
+    use_multilingual_index: bool = Field(default=False, exclude=True)  # Enable multilingual unified index
     
     # Constructed fields
     endpoint: Optional[str] = None
@@ -321,13 +324,16 @@ class _AzureSearchSettings(BaseSettings, DatasourcePayloadConstructor):
     
     @model_validator(mode="after")
     def set_fields_mapping(self) -> Self:
-        self.fields_mapping = {
-            "content_fields": self.content_columns,
-            "title_field": self.title_column,
-            "url_field": self.url_column,
-            "filepath_field": self.filename_column,
-            "vector_fields": self.vector_columns
-        }
+        # Only set static fields mapping if NOT using multilingual index
+        # For multilingual index, fields_mapping is set dynamically in construct_payload_configuration
+        if not self.use_multilingual_index:
+            self.fields_mapping = {
+                "content_fields": self.content_columns,
+                "title_field": self.title_column,
+                "url_field": self.url_column,
+                "filepath_field": self.filename_column,
+                "vector_fields": self.vector_columns
+            }
         return self
     
     @model_validator(mode="after")
@@ -348,6 +354,16 @@ class _AzureSearchSettings(BaseSettings, DatasourcePayloadConstructor):
             return filter_string
         
         return None
+    
+    def _build_multilingual_fields_mapping(self, language: str) -> dict:
+        """Build fields mapping with language-specific field names for multilingual index."""
+        return {
+            "content_fields": [f"content_{language}"],
+            "title_field": f"title_{language}",
+            "url_field": f"url_{language}",
+            "filepath_field": f"filepath_{language}",
+            "vector_fields": self.vector_columns  # Vector field is shared across languages
+        }
             
     def construct_payload_configuration(
         self,
@@ -361,12 +377,21 @@ class _AzureSearchSettings(BaseSettings, DatasourcePayloadConstructor):
             
         self.embedding_dependency = \
             self._settings.azure_openai.extract_embedding_dependency()
+        
+        # Build language-specific fields mapping for multilingual index
+        if self.use_multilingual_index:
+            self.fields_mapping = self._build_multilingual_fields_mapping(language)
+            logging.debug(f"Using multilingual index with language '{language}', fields_mapping: {self.fields_mapping}")
+        
         parameters = self.model_dump(exclude_none=True, by_alias=True)
         parameters.update(self._settings.search.model_dump(exclude_none=True, by_alias=True))
-        if language == 'fr':
+        
+        # For non-multilingual mode, use separate indexes per language (legacy behavior)
+        if not self.use_multilingual_index and language == 'fr' and self.index_fr:
             parameters['index_name'] = self.index_fr
         else:
             parameters['index_name'] = self.index
+            
         logging.debug(f"Parameters for Azure Search: {parameters}")
         return {
             "type": self._type,
