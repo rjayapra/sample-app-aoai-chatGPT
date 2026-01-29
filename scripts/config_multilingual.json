@@ -1,0 +1,42 @@
+[
+    {
+        "location": "canadaeast",
+        "subscription_id": "24afdf0b-32ab-4e12-80dc-87bda2ae28ef",
+        "resource_group": "rg-devinsights",
+        "search_service_name": "ntg-search",
+        "index_name": "oscar-multilingual-index",
+        "chunk_size": 1024,
+        "token_overlap": 128,
+        "semantic_config_name": "multilingual-semantic-config",
+        "vector_config_name": "multilingual-vector-config",
+        "multilingual": true,
+        "languages": ["en", "fr"],
+        "primary_language": "en",
+        "document_mapping_file": "document_mapping.json",
+        "data_paths_multilingual": {
+            "en": {
+                "base_path": "data_en/html",
+                "url_prefix": "https://www.canada.ca/en/department-national-defence/corporate/policies-standards/defence-administrative-orders-directives/"
+            },
+            "fr": {
+                "base_path": "data/html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/"
+            }
+        },
+        "_comments": {
+            "location": "Azure region where the search service will be created",
+            "subscription_id": "Your Azure subscription ID",
+            "resource_group": "Azure resource group name",
+            "search_service_name": "Name of the Azure Cognitive Search service",
+            "index_name": "Name of the unified multilingual index",
+            "chunk_size": "Maximum tokens per chunk (1024 recommended)",
+            "token_overlap": "Overlap between chunks for context continuity",
+            "semantic_config_name": "Name for the semantic search configuration",
+            "vector_config_name": "Name for the vector search profile (remove to disable vector search)",
+            "languages": "List of language codes to support (en, fr, etc.)",
+            "primary_language": "Primary language used for vector embeddings",
+            "document_mapping_file": "Path to JSON file mapping EN/FR document pairs",
+            "data_paths_multilingual": "Base paths and URL prefixes for each language"
+        }
+    }
+]

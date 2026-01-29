@@ -759,7 +759,7 @@ def get_embedding(text, embedding_model_endpoint=None, embedding_model_key=None,
     FLAG_COHERE = os.getenv("FLAG_COHERE", "ENGLISH")
     FLAG_AOAI = os.getenv("FLAG_AOAI", "V3")
 
-    if azure_credential is None and (endpoint is None or key is None):
+    if azure_credential is None and (endpoint is None or embedding_model_key is None):
         raise Exception("EMBEDDING_MODEL_ENDPOINT and EMBEDDING_MODEL_KEY are required for embedding")
 
     try:
