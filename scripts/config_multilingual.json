@@ -1,9 +1,9 @@
 [
     {
-        "location": "canadaeast",
-        "subscription_id": "24afdf0b-32ab-4e12-80dc-87bda2ae28ef",
-        "resource_group": "rg-devinsights",
-        "search_service_name": "ntg-search",
+        "location": "canadacentral",
+        "subscription_id": "5563494c-0695-4f2d-ac17-aed83985b5c9",
+        "resource_group": "NDDNOscar2CcDevServices",
+        "search_service_name": "nd-dn-oscar2-dev-ais",
         "index_name": "oscar-multilingual-index",
         "chunk_size": 1024,
         "token_overlap": 128,
@@ -15,12 +15,14 @@
         "document_mapping_file": "document_mapping.json",
         "data_paths_multilingual": {
             "en": {
-                "base_path": "data_en/html",
-                "url_prefix": "https://www.canada.ca/en/department-national-defence/corporate/policies-standards/defence-administrative-orders-directives/"
+                "base_path": "../data_en/html",
+                "url_prefix": "https://www.canada.ca/en/department-national-defence/corporate/policies-standards/defence-administrative-orders-directives/",
+                "csv_file": "input_en.csv"
             },
             "fr": {
-                "base_path": "data/html",
-                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/"
+                "base_path": "../data/html",
+                "url_prefix": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/",
+                "csv_file": "input_fr.csv"
             }
         },
         "_comments": {

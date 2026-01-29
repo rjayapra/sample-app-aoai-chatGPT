@@ -34,9 +34,11 @@ Usage:
 """
 
 import argparse
+import csv
 import dataclasses
 import json
 import os
+import re
 import subprocess
 import time
 from typing import Dict, List, Optional, Any
@@ -611,14 +613,41 @@ def validate_index(service_name, subscription_id, resource_group, index_name):
 
 
 def generate_document_mapping(config: Dict) -> List[Dict]:
-    """Generate document mapping from directory structure.
+    """Generate document mapping from directory structure and optional CSV files.
     
     This function attempts to match documents across languages based on
     the document ID pattern in filenames (e.g., 1000-0, 1000-1, etc.)
+    
+    If csv_file is specified in the language config, URLs will be read from the CSV
+    instead of being constructed from file paths.
     """
+    
     languages = config.get("languages", ["en", "fr"])
     data_paths = config.get("data_paths_multilingual", {})
     
+    # Build URL index from CSV files (if provided)
+    url_from_csv = {}
+    for lang in languages:
+        lang_config = data_paths.get(lang, {})
+        csv_file = lang_config.get("csv_file")
+        
+        if csv_file and os.path.exists(csv_file):
+            url_from_csv[lang] = {}
+            with open(csv_file, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                for row in reader:
+                    # Get the URL column (first column or 'URL'/'Url')
+                    url = row.get('URL') or row.get('Url') or row.get('url') or list(row.values())[0]
+                    # Get the filename column
+                    filename = row.get('En_Filename') or row.get('Fr_Filename') or row.get('Filename') or list(row.values())[1]
+                    
+                    # Extract doc_id from filename (e.g., "1000-0" from "1000-0-some-title.html")
+                    match = re.match(r'^(\d+-\d+)', filename)
+                    if match:
+                        doc_id = match.group(1)
+                        url_from_csv[lang][doc_id] = url
+            print(f"Loaded {len(url_from_csv[lang])} URLs from CSV for language '{lang}'")
+
     # Build file index for each language
     file_index = {}
     for lang in languages:
@@ -635,13 +664,19 @@ def generate_document_mapping(config: Dict) -> List[Dict]:
             # Extract document ID from filename
             filename = os.path.basename(file_path)
             # Pattern: Extract leading number pattern like "1000-0", "1000-1", etc.
-            import re
             match = re.match(r'^(\d+-\d+)', filename)
             if match:
                 doc_id = match.group(1)
+                
+                # Use URL from CSV if available, otherwise construct from path
+                if lang in url_from_csv and doc_id in url_from_csv[lang]:
+                    url = url_from_csv[lang][doc_id]
+                else:
+                    url = url_prefix + os.path.relpath(file_path, base_path).replace("\\", "/")
+                
                 file_index[lang][doc_id] = {
                     "file_path": file_path,
-                    "url": url_prefix + os.path.relpath(file_path, base_path).replace("\\", "/")
+                    "url": url
                 }
     
     # Create mappings for documents that exist in at least one language
@@ -667,7 +702,8 @@ def create_multilingual_index(
     embedding_model_endpoint=None,
     embedding_model_key=None,
     use_layout=False,
-    njobs=4
+    njobs=4,
+    upload_batch_size=50
 ):
     """Create a multilingual index from the configuration."""
     
@@ -732,11 +768,30 @@ def create_multilingual_index(
 
     print(f"Processing {len(document_mappings)} document sets...")
     
-    # Process all documents
-    all_multilingual_docs = []
-    add_embeddings = config.get("vector_config_name") and embedding_model_endpoint
+    # Initialize search client for incremental uploads
+    endpoint = f"https://{service_name}.search.windows.net/"
+    if not admin_key:
+        admin_key = json.loads(
+            subprocess.run(
+                f"az search admin-key show --subscription {subscription_id} --resource-group {resource_group} --service-name {service_name}",
+                shell=True,
+                capture_output=True,
+            ).stdout
+        )["primaryKey"]
+
+    search_client = SearchClient(
+        endpoint=endpoint,
+        index_name=index_name,
+        credential=AzureKeyCredential(admin_key),
+    )
     
-    for doc_mapping in tqdm(document_mappings, desc="Processing documents"):
+    # Process and upload documents incrementally
+    add_embeddings = config.get("vector_config_name") and embedding_model_endpoint
+    pending_docs = []  # Buffer for batch uploads
+    total_indexed = 0
+    global_doc_idx = 0  # Global index counter for unique IDs
+    
+    for doc_mapping in tqdm(document_mappings, desc="Processing and indexing documents"):
         try:
             multilingual_docs = process_multilingual_document(
                 doc_mapping=doc_mapping,
@@ -751,31 +806,62 @@ def create_multilingual_index(
                 form_recognizer_client=form_recognizer_client,
                 use_layout=use_layout
             )
-            all_multilingual_docs.extend(multilingual_docs)
+            
+            # Convert documents to upload format and add to pending batch
+            for d in multilingual_docs:
+                doc_dict = dataclasses.asdict(d)
+                doc_dict.update({"@search.action": "upload", "id": str(global_doc_idx)})
+                global_doc_idx += 1
+                
+                # Remove None values and empty contentVector
+                if "contentVector" in doc_dict and doc_dict["contentVector"] is None:
+                    del doc_dict["contentVector"]
+                    
+                # Clean up None values for language fields
+                doc_dict = {k: v for k, v in doc_dict.items() if v is not None}
+                
+                pending_docs.append(doc_dict)
+            
+            # Upload when batch size is reached
+            if len(pending_docs) >= upload_batch_size:
+                _upload_batch(search_client, pending_docs[:upload_batch_size])
+                total_indexed += len(pending_docs[:upload_batch_size])
+                pending_docs = pending_docs[upload_batch_size:]
+                
         except Exception as e:
             print(f"Error processing doc_id={doc_mapping.get('doc_id')}: {e}")
 
-    if not all_multilingual_docs:
-        raise Exception("No documents were processed successfully.")
+    # Upload any remaining documents
+    if pending_docs:
+        _upload_batch(search_client, pending_docs)
+        total_indexed += len(pending_docs)
 
-    print(f"Total chunks to index: {len(all_multilingual_docs)}")
+    if total_indexed == 0:
+        raise Exception("No documents were processed and indexed successfully.")
 
-    # Upload documents
-    print("Uploading multilingual documents to index...")
-    upload_multilingual_documents_to_index(
-        service_name, 
-        subscription_id, 
-        resource_group, 
-        index_name, 
-        all_multilingual_docs, 
-        credential,
-        admin_key=admin_key
-    )
+    print(f"Total chunks indexed: {total_indexed}")
 
     # Validate
     print("Validating index...")
     validate_index(service_name, subscription_id, resource_group, index_name)
     print("Index validation completed")
+
+
+def _upload_batch(search_client: SearchClient, batch: List[Dict]):
+    """Upload a batch of documents to the search index."""
+    results = search_client.upload_documents(documents=batch)
+    num_failures = 0
+    errors = set()
+    for result in results:
+        if not result.succeeded:
+            print(f"Indexing Failed for {result.key} with ERROR: {result.error_message}")
+            num_failures += 1
+            errors.add(result.error_message)
+    if num_failures > 0:
+        raise Exception(
+            f"INDEXING FAILED for {num_failures} documents. Please recreate the index. "
+            f"Error Messages: {list(errors)}"
+        )
 
 
 def valid_range(n):
@@ -803,6 +889,8 @@ if __name__ == "__main__":
                         help="Key for the embedding model")
     parser.add_argument("--search-admin-key", type=str, 
                         help="Admin key for the search service")
+    parser.add_argument("--upload-batch-size", type=int, default=50,
+                        help="Number of documents to upload per batch. Default=50")
     parser.add_argument("--generate-mapping-only", action='store_true',
                         help="Only generate document mapping file without indexing")
     
@@ -866,7 +954,8 @@ if __name__ == "__main__":
             embedding_model_endpoint=args.embedding_model_endpoint,
             embedding_model_key=args.embedding_model_key,
             use_layout=args.form_rec_use_layout, 
-            njobs=args.njobs
+            njobs=args.njobs,
+            upload_batch_size=args.upload_batch_size
         )
         print(f"Multilingual data preparation for index {index_config['index_name']} completed")
 

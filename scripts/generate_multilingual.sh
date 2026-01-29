@@ -3,5 +3,5 @@ python generate_document_mapping.py --en-path "../data_en/html" --fr-path "../da
 
 # Step 2: Create the multilingual index
 python data_preparation_multilingual.py --config config_multilingual.json \
-    --embedding-model-endpoint "https://cog-3xejuk4xpcx5c.openai.azure.com/openai/deployments/embedding-large/embeddings?api-version=2023-05-15" \
-    --embedding-model-key "39cc91ddf83b4ea4a780c4b3c90feb0b"     
+    --embedding-model-endpoint "https://nd-dn-oscar2-dev-aoi.openai.azure.com/openai/deployments/embedding/embeddings?api-version=2023-05-15" \
+    --embedding-model-key "d05d6891654544aeaa04a74a46e85f68"     
