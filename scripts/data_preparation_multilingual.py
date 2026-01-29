@@ -847,21 +847,43 @@ def create_multilingual_index(
     print("Index validation completed")
 
 
-def _upload_batch(search_client: SearchClient, batch: List[Dict]):
-    """Upload a batch of documents to the search index."""
-    results = search_client.upload_documents(documents=batch)
-    num_failures = 0
-    errors = set()
-    for result in results:
-        if not result.succeeded:
-            print(f"Indexing Failed for {result.key} with ERROR: {result.error_message}")
-            num_failures += 1
-            errors.add(result.error_message)
-    if num_failures > 0:
-        raise Exception(
-            f"INDEXING FAILED for {num_failures} documents. Please recreate the index. "
-            f"Error Messages: {list(errors)}"
-        )
+def _upload_batch(search_client: SearchClient, batch: List[Dict], max_retries: int = 3):
+    """Upload a batch of documents to the search index.
+    
+    Handles RequestEntityTooLargeError by automatically splitting the batch in half
+    and retrying recursively.
+    """
+    if not batch:
+        return
+    
+    try:
+        results = search_client.upload_documents(documents=batch)
+        num_failures = 0
+        errors = set()
+        for result in results:
+            if not result.succeeded:
+                print(f"Indexing Failed for {result.key} with ERROR: {result.error_message}")
+                num_failures += 1
+                errors.add(result.error_message)
+        if num_failures > 0:
+            raise Exception(
+                f"INDEXING FAILED for {num_failures} documents. Please recreate the index. "
+                f"Error Messages: {list(errors)}"
+            )
+    except Exception as e:
+        error_str = str(e).lower()
+        if "request entity too large" in error_str or "413" in error_str or "requestentitytoolarge" in error_str:
+            if len(batch) == 1:
+                # Single document is too large, skip it
+                print(f"ERROR: Single document too large to upload (id={batch[0].get('id')}). Skipping.")
+                return
+            # Split batch in half and retry
+            mid = len(batch) // 2
+            print(f"Batch too large ({len(batch)} docs), splitting into two batches of {mid} and {len(batch) - mid}...")
+            _upload_batch(search_client, batch[:mid], max_retries)
+            _upload_batch(search_client, batch[mid:], max_retries)
+        else:
+            raise
 
 
 def valid_range(n):
@@ -889,8 +911,8 @@ if __name__ == "__main__":
                         help="Key for the embedding model")
     parser.add_argument("--search-admin-key", type=str, 
                         help="Admin key for the search service")
-    parser.add_argument("--upload-batch-size", type=int, default=50,
-                        help="Number of documents to upload per batch. Default=50")
+    parser.add_argument("--upload-batch-size", type=int, default=10,
+                        help="Number of documents to upload per batch. Default=10. Use smaller values when embeddings are enabled.")
     parser.add_argument("--generate-mapping-only", action='store_true',
                         help="Only generate document mapping file without indexing")
     

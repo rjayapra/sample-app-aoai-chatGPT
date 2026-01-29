@@ -68,18 +68,21 @@ export const Answer = ({ answer, onCitationClicked, onExectResultClicked }: Prop
    const createCitationFilepath = (citation: Citation, index: number, truncate: boolean = false) => {
     let citationFilename = ''
 
-    if (citation.filepath) {
+    // Prefer URL over filepath for display
+    const displayPath = citation.url || citation.filepath
+    
+    if (displayPath) {
       const part_i = citation.part_index ?? (citation.chunk_id ? parseInt(citation.chunk_id) + 1 : '')
-      if (truncate && citation.filepath.length > filePathTruncationLimit) {
-        const citationLength = citation.filepath.length
-        citationFilename = `${citation.filepath.substring(0, 20)}...${citation.filepath.substring(citationLength - 20)} - Part ${part_i}`
+      if (truncate && displayPath.length > filePathTruncationLimit) {
+        const pathLength = displayPath.length
+        citationFilename = `${displayPath.substring(0, 20)}...${displayPath.substring(pathLength - 20)} - Part ${part_i}`
       } else {
-        citationFilename = `${citation.filepath} - Part ${part_i}`
+        citationFilename = `${displayPath} - Part ${part_i}`
       }
-    } else if (citation.filepath && citation.reindex_id) {
-      citationFilename = `${citation.filepath} - Part ${citation.reindex_id}`
+    } else if (citation.reindex_id) {
+      citationFilename = `${appStateContext?.state.language === 'fr' ? 'Référence' : 'Reference'} ${citation.reindex_id}`
     } else {
-      citationFilename = `Citation ${index}`
+      citationFilename = `${appStateContext?.state.language === 'fr' ? 'Référence' : 'Reference'} ${index}`
     }
     return citationFilename
   }
@@ -341,13 +344,17 @@ export const Answer = ({ answer, onCitationClicked, onExectResultClicked }: Prop
                   <Text
                     className={styles.accordionTitle}
                     onClick={toggleIsRefAccordionOpen}
-                    aria-label="Open references"
+                    aria-label={appStateContext?.state.language === 'fr' ? 'Ouvrir les références' : 'Open references'}
                     tabIndex={0}
                     role="button">
                     <span>
-                      {parsedAnswer.citations.length > 1
-                        ? parsedAnswer.citations.length + ' references'
-                        : '1 reference'}
+                      {appStateContext?.state.language === 'fr'
+                        ? (parsedAnswer.citations.length > 1
+                            ? parsedAnswer.citations.length + ' références'
+                            : '1 référence')
+                        : (parsedAnswer.citations.length > 1
+                            ? parsedAnswer.citations.length + ' references'
+                            : '1 reference')}
                     </span>
                   </Text>
                   <FontIcon
