@@ -58,11 +58,15 @@ const Layout = () => {
   useEffect(() => {
     if (!appStateContext) return
     const hostname = window.location.hostname
+    
+    // Detect language based on hostname pattern
+    // French if hostname contains '-fr-' or ends with '-fr' or contains 'french'
+    // Otherwise default to English
     let language = 'en'
-    // Example: Use .fr domain or fr subdomain for French
-    if (hostname.includes('-fr-') ) {
+    if (hostname.includes('-fr-') || hostname.endsWith('-fr') || hostname.includes('french') || hostname.includes('-fr.')) {
       language = 'fr'
     }
+    
     if (appStateContext.state.language !== language) {
       appStateContext.dispatch({ type: 'SET_LANGUAGE', payload: language })
     }

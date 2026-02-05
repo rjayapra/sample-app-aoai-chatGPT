@@ -451,7 +451,7 @@ def process_multilingual_document(
                     "content": chunk.content,
                     "title": chunk.title,
                     "url": url,
-                    "filepath": os.path.relpath(file_path),
+                    "filepath": os.path.basename(file_path),  # Only store filename, not full path
                     "image_mapping": chunk.image_mapping
                 }
                 for chunk in result.chunks

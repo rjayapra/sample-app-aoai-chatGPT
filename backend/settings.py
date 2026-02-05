@@ -379,12 +379,18 @@ class _AzureSearchSettings(BaseSettings, DatasourcePayloadConstructor):
             self._settings.azure_openai.extract_embedding_dependency()
         
         # Build language-specific fields mapping for multilingual index
+        # Note: We build this fresh each time to avoid singleton state issues
         if self.use_multilingual_index:
-            self.fields_mapping = self._build_multilingual_fields_mapping(language)
-            logging.debug(f"Using multilingual index with language '{language}', fields_mapping: {self.fields_mapping}")
+            current_fields_mapping = self._build_multilingual_fields_mapping(language)
+            logging.debug(f"Using multilingual index with language '{language}', fields_mapping: {current_fields_mapping}")
+        else:
+            current_fields_mapping = self.fields_mapping
         
         parameters = self.model_dump(exclude_none=True, by_alias=True)
         parameters.update(self._settings.search.model_dump(exclude_none=True, by_alias=True))
+        
+        # Override the fields_mapping with the language-specific one
+        parameters['fields_mapping'] = current_fields_mapping
         
         # For non-multilingual mode, use separate indexes per language (legacy behavior)
         if not self.use_multilingual_index and language == 'fr' and self.index_fr:
