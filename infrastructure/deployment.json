@@ -62,7 +62,7 @@
             "type": "bool",
             "defaultValue": false,
             "metadata": {
-                "description": "Use semantic search"
+                "description": "Use search"
             }
         },
         "AzureSearchSemanticSearchConfig": {
