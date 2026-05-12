@@ -121,9 +121,10 @@ class _AzureOpenAISettings(BaseSettings):
     key: Optional[str] = None
     resource: Optional[str] = None
     endpoint: Optional[str] = None
-    temperature: float = 0
-    top_p: float = 0
+    temperature: Optional[float] = 0
+    top_p: Optional[float] = 0
     max_tokens: int = 1000
+    max_completion_tokens: Optional[int] = None
     stream: bool = True
     stop_sequence: Optional[List[str]] = None
     seed: Optional[int] = None
@@ -140,6 +141,8 @@ class _AzureOpenAISettings(BaseSettings):
     embedding_endpoint: Optional[str] = None
     embedding_key: Optional[str] = None
     embedding_name: Optional[str] = None
+    is_reasoning_model: bool = False
+    reasoning_effort: Optional[str] = Field(default="medium")
     function_call_azure_functions_enabled: Optional[bool] = False
     function_call_azure_functions_tools_key: Optional[str] = None
     function_call_azure_functions_tools_base_url: Optional[str] = None

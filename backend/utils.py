@@ -75,7 +75,7 @@ def generateFilterString(userToken):
     return f"{AZURE_SEARCH_PERMITTED_GROUPS_COLUMN}/any(g:search.in(g, '{group_ids}'))"
 
 
-def format_non_streaming_response(chatCompletion, history_metadata, apim_request_id):
+def format_non_streaming_response(chatCompletion, history_metadata, apim_request_id, search_context=None):
     response_obj = {
         "id": chatCompletion.id,
         "model": chatCompletion.model,
@@ -85,6 +85,15 @@ def format_non_streaming_response(chatCompletion, history_metadata, apim_request
         "history_metadata": history_metadata,
         "apim-request-id": apim_request_id,
     }
+
+    # Include search citations as a tool message
+    if search_context and search_context.get("citations"):
+        response_obj["choices"][0]["messages"].append(
+            {
+                "role": "tool",
+                "content": json.dumps({"citations": search_context["citations"]}),
+            }
+        )
 
     if len(chatCompletion.choices) > 0:
         message = chatCompletion.choices[0].message
