@@ -1,0 +1,35 @@
+[
+    {
+        "doc_id": "1000-0",
+        "en": {
+            "file_path": "data_en/html/1000/1000-0-foundation-framework-defence-administrative-orders-directives.html",
+            "url": "https://www.canada.ca/en/department-national-defence/corporate/policies-standards/defence-administrative-orders-directives/1000-series/1000/"
+        },
+        "fr": {
+            "file_path": "data/html/1000/1000-0-cadre-principal-des-directives-et-ordonnances-administratives-de-la-defense.html",
+            "url": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+        }
+    },
+    {
+        "doc_id": "1000-1",
+        "en": {
+            "file_path": "data_en/html/1000/1000-1-defence-administrative-orders-directives.html",
+            "url": "https://www.canada.ca/en/department-national-defence/corporate/policies-standards/defence-administrative-orders-directives/1000-series/1000/"
+        },
+        "fr": {
+            "file_path": "data/html/1000/1000-1-directives-et-ordonnances-administratives-de-la-defense.html",
+            "url": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+        }
+    },
+    {
+        "doc_id": "1000-2",
+        "en": {
+            "file_path": "data_en/html/1000/1000-2-communicating-direction-dnd-cf.html",
+            "url": "https://www.canada.ca/en/department-national-defence/corporate/policies-standards/defence-administrative-orders-directives/1000-series/1000/"
+        },
+        "fr": {
+            "file_path": "data/html/1000/1000-2-communication-de-politiques-au-sein-du-mdn-et-des-fc.html",
+            "url": "https://www.canada.ca/fr/ministere-defense-nationale/organisation/politiques-normes/directives-ordonnances-administratives-defense/serie-1000/1000/"
+        }
+    }
+]

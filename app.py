@@ -24,6 +24,7 @@ from azure.identity.aio import (
 from backend.auth.auth_utils import get_authenticated_user_details
 from backend.security.ms_defender_utils import get_msdefender_user_json
 from backend.history.cosmosdbservice import CosmosConversationClient
+from backend.search import search_knowledge_base
 from backend.settings import (
     app_settings,
     MINIMUM_SUPPORTED_AZURE_OPENAI_PREVIEW_API_VERSION
@@ -247,7 +248,7 @@ async def init_cosmosdb_client():
     return cosmos_conversation_client
 
 
-def prepare_model_args(request_body, request_headers):
+def prepare_model_args(request_body, request_headers, search_context=None):
     request_messages = request_body.get("messages", [])
     language = request_body.get("language", "en")
     if language == "fr":
@@ -256,13 +257,32 @@ def prepare_model_args(request_body, request_headers):
         system_msg = app_settings.azure_openai.system_message
    
     messages = []
-    #if not app_settings.datasource:
-    messages = [
-        {
-            "role": "system",
-            "content": system_msg
-        }
-    ]
+
+    # System message — behavior instructions only (no search context)
+    messages.append({
+        "role": "system",
+        "content": system_msg
+    })
+
+    # Developer message — search grounding data as a separate message
+    # The model attends to this distinctly from the system instructions
+    if search_context and search_context.get("context"):
+        if language == "fr":
+            grounding_instruction = (
+                "Vous êtes un assistant de recherche. Utilisez UNIQUEMENT les sources suivantes pour répondre. "
+                "Citez les sources en utilisant le format [docN] dans votre réponse. "
+                "Si les sources ne contiennent pas la réponse, dites-le clairement.\n\n"
+            )
+        else:
+            grounding_instruction = (
+                "You are a research assistant. Use ONLY the following sources to answer the user's question. "
+                "Cite sources using [docN] format in your response. "
+                "If the sources do not contain the answer, say so clearly.\n\n"
+            )
+        messages.append({
+            "role": "developer",
+            "content": grounding_instruction + search_context["context"]
+        })
 
     for message in request_messages:
         if message:
@@ -296,67 +316,37 @@ def prepare_model_args(request_body, request_headers):
         application_name = app_settings.ui.title
         user_json = get_msdefender_user_json(authenticated_user_details, request_headers, conversation_id, application_name)
 
-    model_args = {
-        "messages": messages,
-        "temperature": app_settings.azure_openai.temperature,
-        "max_tokens": app_settings.azure_openai.max_tokens,
-        "top_p": app_settings.azure_openai.top_p,
-        "stop": app_settings.azure_openai.stop_sequence,
-        "stream": app_settings.azure_openai.stream,
-        "model": app_settings.azure_openai.model,
-        "user": user_json
-    }
+    # Build model args — adapt for reasoning models (GPT-5-mini) vs standard models
+    if app_settings.azure_openai.is_reasoning_model:
+        model_args = {
+            "messages": messages,
+            "max_completion_tokens": app_settings.azure_openai.max_completion_tokens or app_settings.azure_openai.max_tokens,
+            "stream": app_settings.azure_openai.stream,
+            "model": app_settings.azure_openai.model,
+            "user": user_json,
+        }
+    else:
+        model_args = {
+            "messages": messages,
+            "temperature": app_settings.azure_openai.temperature,
+            "top_p": app_settings.azure_openai.top_p,
+            "stop": app_settings.azure_openai.stop_sequence,
+            "stream": app_settings.azure_openai.stream,
+            "model": app_settings.azure_openai.model,
+            "user": user_json
+        }
+        # GPT-5-mini requires max_completion_tokens instead of max_tokens
+        if app_settings.azure_openai.max_completion_tokens:
+            model_args["max_completion_tokens"] = app_settings.azure_openai.max_completion_tokens
+        else:
+            model_args["max_tokens"] = app_settings.azure_openai.max_tokens
 
     if len(messages) > 0:
         if messages[-1]["role"] == "user":
             if app_settings.azure_openai.function_call_azure_functions_enabled and len(azure_openai_tools) > 0:
                 model_args["tools"] = azure_openai_tools
 
-            if app_settings.datasource:
-                model_args["extra_body"] = {
-                    "data_sources": [
-                        app_settings.datasource.construct_payload_configuration(
-                            request=request,
-                            language=language,
-                        )
-                    ]
-                }
-
-    model_args_clean = copy.deepcopy(model_args)
-    if model_args_clean.get("extra_body"):
-        secret_params = [
-            "key",
-            "connection_string",
-            "embedding_key",
-            "encoded_api_key",
-            "api_key",
-        ]
-        for secret_param in secret_params:
-            if model_args_clean["extra_body"]["data_sources"][0]["parameters"].get(
-                secret_param
-            ):
-                model_args_clean["extra_body"]["data_sources"][0]["parameters"][
-                    secret_param
-                ] = "*****"
-        authentication = model_args_clean["extra_body"]["data_sources"][0][
-            "parameters"
-        ].get("authentication", {})
-        for field in authentication:
-            if field in secret_params:
-                model_args_clean["extra_body"]["data_sources"][0]["parameters"][
-                    "authentication"
-                ][field] = "*****"
-        embeddingDependency = model_args_clean["extra_body"]["data_sources"][0][
-            "parameters"
-        ].get("embedding_dependency", {})
-        if "authentication" in embeddingDependency:
-            for field in embeddingDependency["authentication"]:
-                if field in secret_params:
-                    model_args_clean["extra_body"]["data_sources"][0]["parameters"][
-                        "embedding_dependency"
-                    ]["authentication"][field] = "*****"
-
-    logging.debug(f"REQUEST BODY: {json.dumps(model_args_clean, indent=4)}")
+    logging.debug(f"REQUEST BODY: {json.dumps(model_args, indent=4, default=str)}")
 
     return model_args
 
@@ -438,8 +428,42 @@ async def send_chat_request(request_body, request_headers):
         if message.get("role") != 'tool':
             filtered_messages.append(message)
             
-    request_body['messages'] = filtered_messages    
-    model_args = prepare_model_args(request_body, request_headers)
+    request_body['messages'] = filtered_messages
+
+    # Step 1: Compute dynamic token budget for search context
+    # GPT-5-mini context window = 128K tokens
+    MODEL_CONTEXT_WINDOW = 128_000
+    output_budget = app_settings.azure_openai.max_completion_tokens or app_settings.azure_openai.max_tokens or 1000
+    system_prompt_tokens = len(app_settings.azure_openai.system_message) // 4 + 200  # base system msg + instruction overhead
+    conversation_tokens = sum(len(m.get("content", "")) // 4 for m in filtered_messages)
+    safety_margin = 1000  # buffer for formatting, instructions, etc.
+    
+    available_for_search = MODEL_CONTEXT_WINDOW - output_budget - system_prompt_tokens - conversation_tokens - safety_margin
+    # Clamp between 2K and 32K tokens for search context
+    max_context_tokens = max(2000, min(32_000, available_for_search))
+    logging.info(f"Dynamic search context budget: {max_context_tokens} tokens (conversation: ~{conversation_tokens}, output: {output_budget})")
+
+    # Step 2: Search the knowledge base for relevant context
+    search_context = None
+    language = request_body.get("language", "en")
+    if filtered_messages:
+        last_user_msg = next(
+            (m["content"] for m in reversed(filtered_messages) if m.get("role") == "user"),
+            None
+        )
+        if last_user_msg:
+            try:
+                search_context = await search_knowledge_base(
+                    query=last_user_msg,
+                    language=language,
+                    max_context_tokens=max_context_tokens,
+                )
+                logging.info(f"Search returned {len(search_context.get('citations', []))} citations")
+            except Exception as e:
+                logging.warning(f"Search failed, proceeding without context: {e}")
+
+    # Step 3: Build model args with search context injected into system prompt
+    model_args = prepare_model_args(request_body, request_headers, search_context=search_context)
     print(f"Model args: {model_args}")
 
     try:
@@ -451,7 +475,7 @@ async def send_chat_request(request_body, request_headers):
         logging.exception("Exception in send_chat_request")
         raise e
 
-    return response, apim_request_id
+    return response, apim_request_id, search_context
 
 
 async def complete_chat_request(request_body, request_headers):
@@ -465,9 +489,9 @@ async def complete_chat_request(request_body, request_headers):
             app_settings.promptflow.citations_field_name
         )
     else:
-        response, apim_request_id = await send_chat_request(request_body, request_headers)
+        response, apim_request_id, search_context = await send_chat_request(request_body, request_headers)
         history_metadata = request_body.get("history_metadata", {})
-        non_streaming_response = format_non_streaming_response(response, history_metadata, apim_request_id)
+        non_streaming_response = format_non_streaming_response(response, history_metadata, apim_request_id, search_context=search_context)
 
         if app_settings.azure_openai.function_call_azure_functions_enabled:
             function_response = await process_function_call(response)  # Add await here
@@ -475,9 +499,9 @@ async def complete_chat_request(request_body, request_headers):
             if function_response:
                 request_body["messages"].extend(function_response)
 
-                response, apim_request_id = await send_chat_request(request_body, request_headers)
+                response, apim_request_id, search_context = await send_chat_request(request_body, request_headers)
                 history_metadata = request_body.get("history_metadata", {})
-                non_streaming_response = format_non_streaming_response(response, history_metadata, apim_request_id)
+                non_streaming_response = format_non_streaming_response(response, history_metadata, apim_request_id, search_context=search_context)
 
     return non_streaming_response
 
@@ -546,10 +570,26 @@ async def process_function_call_stream(completionChunk, function_call_stream_sta
 
 
 async def stream_chat_request(request_body, request_headers):
-    response, apim_request_id = await send_chat_request(request_body, request_headers)
+    response, apim_request_id, search_context = await send_chat_request(request_body, request_headers)
     history_metadata = request_body.get("history_metadata", {})
     
     async def generate(apim_request_id, history_metadata):
+        # Emit search citations as the first tool message so the frontend can render them
+        if search_context and search_context.get("citations"):
+            context_msg = {
+                "id": "",
+                "model": "",
+                "created": 0,
+                "object": "chat.completion.chunk",
+                "choices": [{"messages": [{
+                    "role": "tool",
+                    "content": json.dumps({"citations": search_context["citations"]})
+                }]}],
+                "history_metadata": history_metadata,
+                "apim-request-id": apim_request_id,
+            }
+            yield context_msg
+
         if app_settings.azure_openai.function_call_azure_functions_enabled:
             # Maintain state during function call streaming
             function_call_stream_state = AzureOpenaiFunctionCallStreamState()
@@ -565,7 +605,7 @@ async def stream_chat_request(request_body, request_headers):
                 # Append function calls and results to history and send to OpenAI, to stream the final answer.
                 if stream_state == "COMPLETED":
                     request_body["messages"].extend(function_call_stream_state.function_messages)
-                    function_response, apim_request_id = await send_chat_request(request_body, request_headers)
+                    function_response, apim_request_id, _ = await send_chat_request(request_body, request_headers)
                     async for functionCompletionChunk in function_response:
                         yield format_stream_response(functionCompletionChunk, history_metadata, apim_request_id)
                 
