@@ -175,15 +175,52 @@ def _build_citation(document: Mapping[str, Any], language: str) -> dict[str, Any
     }
 
 
-def _format_context(citations: list[dict[str, Any]]) -> str:
-    return "\n\n".join(
-        (
+def _estimate_tokens(text: str) -> int:
+    """Rough token estimate: ~4 chars per token for English, ~3 for French."""
+    if not text:
+        return 0
+    return len(text) // 4 + 1
+
+
+def _format_context(citations: list[dict[str, Any]], max_tokens: int = 8000) -> str:
+    """Format citations with ranked truncation within a token budget.
+
+    Top-ranked results get full content.  Lower-ranked results are
+    progressively trimmed so the combined context fits within *max_tokens*.
+    """
+    if not citations:
+        return ""
+
+    max_chars = max_tokens * 4  # 1 token ≈ 4 chars
+    parts: list[str] = []
+    total_chars = 0
+
+    for index, citation in enumerate(citations, start=1):
+        header = (
             f"[Source {index}] Title: {citation['title']}\n"
             f"URL: {citation['url']}\n"
-            f"Content: {citation['content']}"
+            f"Content: "
         )
-        for index, citation in enumerate(citations, start=1)
-    )
+        content = citation["content"]
+        full_part = header + content
+        remaining_budget = max_chars - total_chars
+
+        if remaining_budget <= 0:
+            break
+
+        if len(full_part) <= remaining_budget:
+            # Full content fits
+            parts.append(full_part)
+            total_chars += len(full_part)
+        else:
+            # Ranked truncation: trim content to fit remaining budget
+            available_for_content = remaining_budget - len(header) - 4  # 4 for "..."
+            if available_for_content > 100:
+                parts.append(header + content[:available_for_content] + "...")
+                total_chars += remaining_budget
+            break
+
+    return "\n\n".join(parts)
 
 
 def _execute_search(
@@ -220,7 +257,7 @@ def _execute_search(
         return list(results)
 
 
-def _search_sync(query: str, language: str, top_k: int) -> dict[str, Any]:
+def _search_sync(query: str, language: str, top_k: int, max_context_tokens: int = 8000) -> dict[str, Any]:
     index_name = _get_index_name(language)
     if not index_name:
         raise ValueError("AZURE_SEARCH_INDEX is required")
@@ -234,15 +271,24 @@ def _search_sync(query: str, language: str, top_k: int) -> dict[str, Any]:
             close()
 
     citations = [_build_citation(result, language) for result in raw_results]
-    return {"context": _format_context(citations), "citations": citations}
+    return {"context": _format_context(citations, max_tokens=max_context_tokens), "citations": citations}
 
 
 async def search_knowledge_base(
     query: str,
     language: str = "en",
     top_k: int = 5,
+    max_context_tokens: int = 8000,
 ) -> dict[str, Any]:
-    """Search the DND bilingual knowledge base and return formatted grounding data."""
+    """Search the DND bilingual knowledge base and return formatted grounding data.
+    
+    Args:
+        query: User's search query
+        language: "en" or "fr"
+        top_k: Number of search results to retrieve
+        max_context_tokens: Token budget for the formatted context string.
+            Caller should compute this dynamically based on available model context.
+    """
 
     normalized_query = _clean_text(query)
     if not normalized_query:
@@ -261,6 +307,7 @@ async def search_knowledge_base(
             normalized_query,
             normalized_language,
             top_k,
+            max_context_tokens,
         )
         logger.debug(
             "Knowledge base search returned %s citations for language '%s'",

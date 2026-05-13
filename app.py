@@ -255,29 +255,34 @@ def prepare_model_args(request_body, request_headers, search_context=None):
         system_msg = app_settings.azure_openai.system_message_fr
     else:
         system_msg = app_settings.azure_openai.system_message
-
-    # Inject search context into system message if available
-    if search_context and search_context.get("context"):
-        if language == "fr":
-            system_msg += (
-                "\n\nUtilisez les sources suivantes pour répondre à la question de l'utilisateur. "
-                "Citez les sources en utilisant le format [docN] dans votre réponse.\n\n"
-                + search_context["context"]
-            )
-        else:
-            system_msg += (
-                "\n\nUse the following sources to answer the user's question. "
-                "Cite sources using [docN] format in your response.\n\n"
-                + search_context["context"]
-            )
    
     messages = []
-    messages = [
-        {
-            "role": "system",
-            "content": system_msg
-        }
-    ]
+
+    # System message — behavior instructions only (no search context)
+    messages.append({
+        "role": "system",
+        "content": system_msg
+    })
+
+    # Developer message — search grounding data as a separate message
+    # The model attends to this distinctly from the system instructions
+    if search_context and search_context.get("context"):
+        if language == "fr":
+            grounding_instruction = (
+                "Vous êtes un assistant de recherche. Utilisez UNIQUEMENT les sources suivantes pour répondre. "
+                "Citez les sources en utilisant le format [docN] dans votre réponse. "
+                "Si les sources ne contiennent pas la réponse, dites-le clairement.\n\n"
+            )
+        else:
+            grounding_instruction = (
+                "You are a research assistant. Use ONLY the following sources to answer the user's question. "
+                "Cite sources using [docN] format in your response. "
+                "If the sources do not contain the answer, say so clearly.\n\n"
+            )
+        messages.append({
+            "role": "developer",
+            "content": grounding_instruction + search_context["context"]
+        })
 
     for message in request_messages:
         if message:
@@ -320,19 +325,21 @@ def prepare_model_args(request_body, request_headers, search_context=None):
             "model": app_settings.azure_openai.model,
             "user": user_json,
         }
-        if app_settings.azure_openai.reasoning_effort:
-            model_args["reasoning_effort"] = app_settings.azure_openai.reasoning_effort
     else:
         model_args = {
             "messages": messages,
             "temperature": app_settings.azure_openai.temperature,
-            "max_tokens": app_settings.azure_openai.max_tokens,
             "top_p": app_settings.azure_openai.top_p,
             "stop": app_settings.azure_openai.stop_sequence,
             "stream": app_settings.azure_openai.stream,
             "model": app_settings.azure_openai.model,
             "user": user_json
         }
+        # GPT-5-mini requires max_completion_tokens instead of max_tokens
+        if app_settings.azure_openai.max_completion_tokens:
+            model_args["max_completion_tokens"] = app_settings.azure_openai.max_completion_tokens
+        else:
+            model_args["max_tokens"] = app_settings.azure_openai.max_tokens
 
     if len(messages) > 0:
         if messages[-1]["role"] == "user":
@@ -423,7 +430,20 @@ async def send_chat_request(request_body, request_headers):
             
     request_body['messages'] = filtered_messages
 
-    # Step 1: Search the knowledge base for relevant context
+    # Step 1: Compute dynamic token budget for search context
+    # GPT-5-mini context window = 128K tokens
+    MODEL_CONTEXT_WINDOW = 128_000
+    output_budget = app_settings.azure_openai.max_completion_tokens or app_settings.azure_openai.max_tokens or 1000
+    system_prompt_tokens = len(app_settings.azure_openai.system_message) // 4 + 200  # base system msg + instruction overhead
+    conversation_tokens = sum(len(m.get("content", "")) // 4 for m in filtered_messages)
+    safety_margin = 1000  # buffer for formatting, instructions, etc.
+    
+    available_for_search = MODEL_CONTEXT_WINDOW - output_budget - system_prompt_tokens - conversation_tokens - safety_margin
+    # Clamp between 2K and 32K tokens for search context
+    max_context_tokens = max(2000, min(32_000, available_for_search))
+    logging.info(f"Dynamic search context budget: {max_context_tokens} tokens (conversation: ~{conversation_tokens}, output: {output_budget})")
+
+    # Step 2: Search the knowledge base for relevant context
     search_context = None
     language = request_body.get("language", "en")
     if filtered_messages:
@@ -436,12 +456,13 @@ async def send_chat_request(request_body, request_headers):
                 search_context = await search_knowledge_base(
                     query=last_user_msg,
                     language=language,
+                    max_context_tokens=max_context_tokens,
                 )
                 logging.info(f"Search returned {len(search_context.get('citations', []))} citations")
             except Exception as e:
                 logging.warning(f"Search failed, proceeding without context: {e}")
 
-    # Step 2: Build model args with search context injected into system prompt
+    # Step 3: Build model args with search context injected into system prompt
     model_args = prepare_model_args(request_body, request_headers, search_context=search_context)
     print(f"Model args: {model_args}")
 
