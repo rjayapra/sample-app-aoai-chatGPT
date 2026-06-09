@@ -474,8 +474,10 @@ def process_multilingual_document(
         
         for lang in languages:
             chunks = chunks_by_language.get(lang, [])
-            if chunk_idx < len(chunks):
-                chunk = chunks[chunk_idx]
+            if chunks:
+                # Use the requested chunk index or the last available chunk (forward-fill)
+                actual_idx = min(chunk_idx, len(chunks) - 1)
+                chunk = chunks[actual_idx]
                 setattr(doc, f"content_{lang}", chunk["content"])
                 setattr(doc, f"title_{lang}", chunk["title"])
                 setattr(doc, f"url_{lang}", chunk["url"])

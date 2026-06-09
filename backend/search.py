@@ -53,6 +53,100 @@ _LANGUAGE_CONFIGS = {
 }
 
 
+def _as_non_empty_string(value: Any) -> str | None:
+    if value is None:
+        return None
+    text = str(value).strip()
+    return text if text else None
+
+
+def _first_non_empty_content_column(value: Any) -> str | None:
+    if isinstance(value, str):
+        return _as_non_empty_string(value)
+    if isinstance(value, (list, tuple)):
+        for item in value:
+            text = _as_non_empty_string(item)
+            if text:
+                return text
+    return None
+
+
+def _resolve_language_setting(
+    language: str,
+    *,
+    datasource_setting: str,
+    env_setting: str,
+    fallback: str,
+) -> str:
+    language_suffix = language.upper()
+    value = (
+        _as_non_empty_string(_get_datasource_setting(f"{datasource_setting}_{language}"))
+        or _as_non_empty_string(os.getenv(f"AZURE_SEARCH_{env_setting}_{language_suffix}"))
+        or _as_non_empty_string(_get_datasource_setting(datasource_setting))
+        or _as_non_empty_string(os.getenv(f"AZURE_SEARCH_{env_setting}"))
+    )
+    return value or fallback
+
+
+@lru_cache(maxsize=2)
+def _get_language_config(language: str) -> _LanguageConfig:
+    normalized_language = _normalize_language(language)
+    defaults = _LANGUAGE_CONFIGS[normalized_language]
+
+    title_field = _resolve_language_setting(
+        normalized_language,
+        datasource_setting="title_column",
+        env_setting="TITLE_COLUMN",
+        fallback=defaults.title_field,
+    )
+
+    url_field = _resolve_language_setting(
+        normalized_language,
+        datasource_setting="url_column",
+        env_setting="URL_COLUMN",
+        fallback=defaults.url_field,
+    )
+
+    content_field = (
+        _first_non_empty_content_column(
+            _get_datasource_setting(f"content_columns_{normalized_language}")
+        )
+        or _first_non_empty_content_column(
+            os.getenv(f"AZURE_SEARCH_CONTENT_COLUMNS_{normalized_language.upper()}")
+        )
+        or _first_non_empty_content_column(_get_datasource_setting("content_columns"))
+        or _first_non_empty_content_column(os.getenv("AZURE_SEARCH_CONTENT_COLUMNS"))
+        or _resolve_language_setting(
+            normalized_language,
+            datasource_setting="content_column",
+            env_setting="CONTENT_COLUMN",
+            fallback=defaults.content_field,
+        )
+    )
+
+    semantic_configuration = _resolve_language_setting(
+        normalized_language,
+        datasource_setting="semantic_search_config",
+        env_setting="SEMANTIC_CONFIGURATION",
+        fallback=defaults.semantic_configuration,
+    )
+
+    query_language = _resolve_language_setting(
+        normalized_language,
+        datasource_setting="query_language",
+        env_setting="QUERY_LANGUAGE",
+        fallback=defaults.query_language,
+    )
+
+    return _LanguageConfig(
+        title_field=title_field,
+        content_field=content_field,
+        url_field=url_field,
+        semantic_configuration=semantic_configuration,
+        query_language=query_language,
+    )
+
+
 def _empty_search_result() -> dict[str, Any]:
     return {"context": "", "citations": []}
 
@@ -135,9 +229,9 @@ def _clean_text(value: Any) -> str:
 
 
 def _build_citation(document: Mapping[str, Any], language: str) -> dict[str, Any]:
-    language_config = _LANGUAGE_CONFIGS[language]
+    language_config = _get_language_config(language)
     fallback_language = "fr" if language == "en" else "en"
-    fallback_config = _LANGUAGE_CONFIGS[fallback_language]
+    fallback_config = _get_language_config(fallback_language)
 
     chunk_index = document.get("chunk_index")
     try:
@@ -229,7 +323,7 @@ def _execute_search(
     language: str,
     top_k: int,
 ) -> list[Mapping[str, Any]]:
-    language_config = _LANGUAGE_CONFIGS[language]
+    language_config = _get_language_config(language)
     search_fields = [language_config.content_field, language_config.title_field]
 
     try:
